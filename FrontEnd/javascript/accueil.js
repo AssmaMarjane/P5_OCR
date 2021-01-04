@@ -35,5 +35,19 @@ fonction asynchrone getNumberOfFollowers () {
   console.log (`Nombre d'abonnés: $ {nOfFollowers}`)
   console.log (`Emplacement: $ {location}`)
 }
-
 getNumberOfFollowers ();*/
+
+/*requete axios ddl img
+get_image.js
+const axios = require ('axios');
+const fs = require ('fs');
+
+var config = {
+    responseType: 'stream'
+};
+fonction asynchrone getImage () {
+
+    let resp = attendre axios.get (url, config);
+    resp.data.pipe (fs.createWriteStream ('image.jpg'));
+}
+getImage ();*/
