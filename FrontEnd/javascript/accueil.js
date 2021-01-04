@@ -12,3 +12,28 @@ request.send();
 .then(response => response.json())
 .then(response => alert(JSON.stringify(response)))
 .catch(error => alert("Erreur : " + error));*/
+
+/*méthode axios
+install Axios.
+$ nœud -v
+v11.5.0
+utilis la version 11.5 de Node.js.
+$ npm init -y
+lance une nouvelle application Node.js.
+$ npm i axios
+install Axios avec la npm i axioscommande.*/
+
+/*requéte axios à api githubgithub.js
+const axios = require ('axios');
+fonction asynchrone getNumberOfFollowers () {
+
+  laissez res = attendre axios.get ('https://api.github.com/users/janbodnar');
+
+  laissez nOfFollowers = res.data.followers;
+  let location = res.data.location;
+
+  console.log (`Nombre d'abonnés: $ {nOfFollowers}`)
+  console.log (`Emplacement: $ {location}`)
+}
+
+getNumberOfFollowers ();*/
