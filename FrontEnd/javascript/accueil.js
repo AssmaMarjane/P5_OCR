@@ -1,8 +1,37 @@
 console.log("ceci est un test");
 
-var request = new XMLHttpRequest();
+/*let homeProduit = document.getElementById("containerProduct");
+console.log(homeProduit);*/
+let homeProduit = document.querySelector("#containerProduct");
+homeProduit.innerHTML = ` <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="#">Teddie </a>
+                                </h4>
+                                <p class="card-text">description</p>
+                              </div>
+                            </div>
+                          </div>`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*var request = new XMLHttpRequest();
 request.open("GET", "http://localhost:3000/api/teddies ");
-request.send();
+request.send();*/
+
 //première requête
 
 //https://github.com/OpenClassrooms-Student-Center/JWDP5.git
