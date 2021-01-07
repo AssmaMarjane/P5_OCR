@@ -16,6 +16,14 @@ homeProduit.innerHTML = ` <div class="col-lg-4 col-md-6 mb-4">
                           </div>`;
 
 
+fetch("http://localhost:3000/api/teddies")
+.then(response => response.json())
+.then(response => alert(JSON.stringify(response)))
+.catch(error => alert("Erreur : " + error));
+
+fetch ('http://localhost:3000/api/teddies')
+.then (response => response.json ())
+.then (json => console.log (json));
 
 
 
@@ -36,11 +44,16 @@ request.send();*/
 
 //https://github.com/OpenClassrooms-Student-Center/JWDP5.git
 
-//méthode fetch
-/* fetch("mon url")
+//méthode fetch  http://localhost:3000/api/teddies
+
+/* fetch("http://localhost:3000/api/teddies")
 .then(response => response.json())
 .then(response => alert(JSON.stringify(response)))
 .catch(error => alert("Erreur : " + error));*/
+
+/* fetch ('http://localhost:3000/api/teddies')
+.then (response => response.json ())
+.then (json => console.log (json));*/
 
 /*méthode fetch2
 const myImage = document.querySelector('img');
