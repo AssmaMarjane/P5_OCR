@@ -25,6 +25,38 @@ fetch ('http://localhost:3000/api/teddies')
 .then (response => response.json ())
 .then (json => console.log (json));
 
+//*méthode fetch2 test
+
+const myImage = document.querySelector('img');
+fetch('teddie.jpg')
+.then(function(response) {
+  return response.blob();
+})
+.then(function(myBlob) {
+  const objectURL = URL.createObjectURL(myBlob);
+  myImage.src = objectURL;
+});
+
+
+/*
+var myHeaders = new Headers();
+
+var myInit = { method: 'GET',
+               headers: myHeaders,
+               mode: 'cors',
+               cache: 'default' };
+
+fetch('flowers.jpg',myInit)
+.then(function(response) {
+  return response.blob();
+})
+.then(function(myBlob) {
+  var objectURL = URL.createObjectURL(myBlob);
+  myImage.src = objectURL;
+});
+
+*/
+
 
 
 
