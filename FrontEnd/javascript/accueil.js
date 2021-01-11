@@ -5,7 +5,7 @@ console.log(homeProduit);*/
 let homeProduit = document.querySelector("#containerProduct");
 homeProduit.innerHTML = ` <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
-                              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                              <a href="#"><img class="card-img-top" src="" alt=""></a>
                               <div class="card-body">
                                 <h4 class="card-title">
                                   <a href="#">Teddie </a>
@@ -16,19 +16,19 @@ homeProduit.innerHTML = ` <div class="col-lg-4 col-md-6 mb-4">
                           </div>`;
 
 
-fetch("http://localhost:3000/api/teddies")
+/*fetch("http://localhost:3000/api/teddies")
 .then(response => response.json())
 .then(response => alert(JSON.stringify(response)))
-.catch(error => alert("Erreur : " + error));
+.catch(error => alert("Erreur : " + error));*/
 
 fetch ('http://localhost:3000/api/teddies')
 .then (response => response.json ())
 .then (json => console.log (json));
 
-//*méthode fetch2 test
+/*méthode fetch2 test
 
 const myImage = document.querySelector('img');
-fetch('teddie.jpg')
+fetch('http://localhost:3000/api/teddies')
 .then(function(response) {
   return response.blob();
 })
@@ -36,6 +36,10 @@ fetch('teddie.jpg')
   const objectURL = URL.createObjectURL(myBlob);
   myImage.src = objectURL;
 });
+console.log(myImage);
+*/
+
+
 
 
 /*
