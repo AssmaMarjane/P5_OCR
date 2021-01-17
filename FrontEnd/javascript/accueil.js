@@ -15,6 +15,18 @@ homeProduit.innerHTML = ` <div class="col-lg-4 col-md-6 mb-4">
                             </div>
                           </div>`;
 
+/*let produitOurson = ['Teddie1', 'Teddie2','Teddie3','Teddie4','Teddie5'];
+console.log(produitOurson);*/
+
+/*let produitOurson = 5;
+while(produitOurson<5) {
+  console.log("+produitOurson+");
+}*/
+
+let ourson = 5;
+do{
+  console.log("Teddie "+ourson+"");
+} while(ourson<5);
 
 /*fetch("http://localhost:3000/api/teddies")
 .then(response => response.json())
@@ -24,6 +36,46 @@ homeProduit.innerHTML = ` <div class="col-lg-4 col-md-6 mb-4">
 fetch ('http://localhost:3000/api/teddies')
 .then (response => response.json ())
 .then (json => console.log (json));
+
+
+/*// Déclaration de mon tableau de la semaine
+let tabJours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+let container = document.querySelector('#container');
+
+//Boucle sur les jours de la semaine
+// i : notre compteur dans la boucle, initialisé à 0 car un tableau commence à l'index 0
+// On boucle avec i égal à 0 au départ, on incrémente de 1 à chaque tour, TANT QUE i est inférieure à la longueur du tableau (ici 7)
+for (let i = 0; i < tabJours.length; i++) {
+  //console.log(tabJours[i])
+  container.innerHTML += '<li>'+tabJours[i]+'</li>';
+	// Ce qui équivaut à 
+	// container.innerHTML = container.innerHTML + '<li>'+tabJours[i]+'</li>';
+	// innerHTML peut à la fois récupérer le code HTML dans un container mais peut aussi remplacer le code
+
+}
+
+
+// Autre boucle possible
+let tabMois = ['Janvier', 'Février', 'Mars', 'Avril', '...', '..', '.'];
+let containerMois = document.querySelector('#containerMois');
+
+tabMois.forEach ( 
+	function (mois){
+		containerMois.innerHTML += '<li>'+mois+'</li>';
+	}
+)
+
+// Encore mieux ++
+// Avec la boucle for..of et les templates litterals
+let tabSaisons = ['Hiver', 'Printemps', 'Été', 'Automne'];
+let containerSaisons = document.querySelector('#containerSaisons');
+
+for(const saison of tabSaisons){
+	containerSaisons.innerHTML += `<li>${saison}</li>`
+}*/
+
+
+
 
 /*méthode fetch2 test
 
