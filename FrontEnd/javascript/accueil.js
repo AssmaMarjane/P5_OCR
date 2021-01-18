@@ -33,17 +33,38 @@ fetch ('http://localhost:3000/api/teddies')
 .then (response => response.json ())
 .then (json => console.log (json));
 
-// Avec la boucle for..of et les templates litterals
+/* premier test Avec la boucle for..of et les templates litterals
 let nameProduct = ['http://localhost:3000/api/teddies'];
-let container = document.querySelector('#containerProduct');
+let container = document.querySelector('#containerProduct');*/
 
 /*for(const nameProduct of container){
-	containerSaisons.innerHTML += `<li>${nameProduct}</li>`
+	container.innerHTML += `<li>${nameProduct}</li>`
 };*/
-for (let i = '0'; i < nameProduct.length; i++);
+/*for (let i = '0'; i < nameProduct.length; i++);
 console.log("nameProduct[i]");
-container.innerHTML += '<li>'+"nameProduct"[i]+'</li>';
+container.innerHTML += '<li>'+"nameProduct"[i]+'</li>';*/
 
+/*let imageProduct = ['http://localhost:3000/images'];
+let container = document.querySelector('#containerProduct');*/
+/*for(const nameProduct of container){
+	container.innerHTML += `<li>${nameProduct}</li>`
+};*/
+/*for (let i = '0'; i < imageProduct.length; i++);
+console.log("imageProduct[i]");
+container.innerHTML += '<li>'+"imageProduct"[i]+'</li>';*/
+
+
+//deuxieme test avec fetch
+const myImage = document.querySelector("img");
+fetch('http://localhost:3000/images/teddy_1.jpg')
+.then(function(response) {
+  return response.blob();
+})
+.then(function(myBlob) {
+  const objectURL = URL.createObjectURL(myBlob);
+  myImage.src = objectURL;
+});
+console.log("myImage");
 
 /*// Déclaration de mon tableau de la semaine
 let tabJours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
