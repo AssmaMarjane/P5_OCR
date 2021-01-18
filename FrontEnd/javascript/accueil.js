@@ -23,19 +23,26 @@ while(produitOurson<5) {
   console.log("+produitOurson+");
 }*/
 
+/* test 
 let ourson = 5;
 do{
   console.log("Teddie "+ourson+"");
-} while(ourson<5);
-
-/*fetch("http://localhost:3000/api/teddies")
-.then(response => response.json())
-.then(response => alert(JSON.stringify(response)))
-.catch(error => alert("Erreur : " + error));*/
+} while(ourson<5); */
 
 fetch ('http://localhost:3000/api/teddies')
 .then (response => response.json ())
 .then (json => console.log (json));
+
+// Avec la boucle for..of et les templates litterals
+let nameProduct = ['http://localhost:3000/api/teddies'];
+let container = document.querySelector('#containerProduct');
+
+/*for(const nameProduct of container){
+	containerSaisons.innerHTML += `<li>${nameProduct}</li>`
+};*/
+for (let i = '0'; i < nameProduct.length; i++);
+console.log("nameProduct[i]");
+container.innerHTML += '<li>'+"nameProduct"[i]+'</li>';
 
 
 /*// Déclaration de mon tableau de la semaine
@@ -74,6 +81,10 @@ for(const saison of tabSaisons){
 	containerSaisons.innerHTML += `<li>${saison}</li>`
 }*/
 
+/*fetch("http://localhost:3000/api/teddies")
+.then(response => response.json())
+.then(response => alert(JSON.stringify(response)))
+.catch(error => alert("Erreur : " + error));*/
 
 
 
