@@ -1,4 +1,4 @@
-console.log("ceci est un test");
+//console.log("ceci est un test");
 
 /*let homeProduit = document.getElementById("containerProduct");
 console.log(homeProduit);*/
@@ -15,6 +15,45 @@ homeProduit.innerHTML = ` <div class="col-lg-4 col-md-6 mb-4">
                             </div>
                           </div>`;
 
+
+fetch ('http://localhost:3000/api/teddies')
+.then (response => response.json ())
+.then (
+  products => 
+  {
+    console.log (products);
+    let premierOurson = products[0];
+    let deuxiemeOurson = products[1];
+    let thirdOurson = products[2];
+    let quatreOurson = products[3];
+    let cinqOurson = products[4];
+    console.log(premierOurson);
+    console.log(premierOurson.name);
+    console.log(cinqOurson.name);
+    for ( let product of products) {
+      console.log(product.name);
+    }
+  }
+  
+);
+
+    /*let nameProduct = ;
+    console.log(nameProduct);
+
+    for (let nameProduct of listeProduits) {
+      console.log("Pelluche " + nameProduct);*/
+
+    /*for (let i in listeProduits) {
+      console.log("Ourson disponible" + listeProduits[i]);
+    }
+    */
+    /*console.log (json);
+    let productTab = json;
+    for (let i=0; i < productTab.length; i++){
+      console.log ("Produits ourson");
+    }*/
+
+
 /*let produitOurson = ['Teddie1', 'Teddie2','Teddie3','Teddie4','Teddie5'];
 console.log(produitOurson);*/
 
@@ -29,9 +68,6 @@ do{
   console.log("Teddie "+ourson+"");
 } while(ourson<5); */
 
-fetch ('http://localhost:3000/api/teddies')
-.then (response => response.json ())
-.then (json => console.log (json));
 
 /* premier test Avec la boucle for..of et les templates litterals
 let nameProduct = ['http://localhost:3000/api/teddies'];
@@ -54,7 +90,7 @@ console.log("imageProduct[i]");
 container.innerHTML += '<li>'+"imageProduct"[i]+'</li>';*/
 
 
-//deuxieme test avec fetch
+/*deuxieme test avec fetch
 const myImage = document.querySelector("img");
 fetch('http://localhost:3000/images/teddy_1.jpg')
 .then(function(response) {
@@ -64,7 +100,7 @@ fetch('http://localhost:3000/images/teddy_1.jpg')
   const objectURL = URL.createObjectURL(myBlob);
   myImage.src = objectURL;
 });
-console.log("myImage");
+console.log("myImage");*/
 
 /*// Déclaration de mon tableau de la semaine
 let tabJours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
