@@ -2,19 +2,6 @@
 
 /*let homeProduit = document.getElementById("containerProduct");
 console.log(homeProduit);*/
-let homeProduit = document.querySelector(".containerProduct");
-homeProduit.innerHTML = ` <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="card h-100">
-                              <a href="#"><img class="card-img-top" src="" alt=""></a>
-                              <div class="card-body">
-                                <h4 class="card-title">
-                                  <a href="#">Teddie </a>
-                                </h4>
-                                <p class="card-text">description</p>
-                              </div>
-                            </div>
-                          </div>`;
-console.log(homeProduit);
 
 /*let nomProd =  document.querySelector("#containerProduct");
 nomProd.innerHTML = "petit ourson";
@@ -43,11 +30,23 @@ fetch ('http://localhost:3000/api/teddies')
       produitAccueil.innerHTML = product.name;
       //produitAccueil.innerHTML += product.name;
       console.log(produitAccueil);*/
-
-      let productHome = document.querySelector(".containerProduct h4 > a");
-      productHome.innerHTML += product.name;
+      let homeProduit = document.querySelector("#containerProduct");
+      homeProduit.innerHTML += ` <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                              <a href="#"><img class="card-img-top" src="" alt=""></a>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="#"> `+product.name+ `</a>
+                                </h4>
+                                <p class="card-text"></p>
+                              </div>
+                            </div>
+                          </div>`;
+      console.log(homeProduit);
+      /*let productHome = document.querySelector("#containerProduct h4 > a");
+      productHome.innerHTML += product.name ;*/
       //productHome.innerHTML += '<li>'+ product.name+ '<li>';
-      console.log(productHome);
+      //console.log(productHome);
     }
   }
 );
