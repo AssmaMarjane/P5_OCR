@@ -2,7 +2,7 @@
 
 /*let homeProduit = document.getElementById("containerProduct");
 console.log(homeProduit);*/
-let homeProduit = document.querySelector("#containerProduct");
+let homeProduit = document.querySelector(".containerProduct");
 homeProduit.innerHTML = ` <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
                               <a href="#"><img class="card-img-top" src="" alt=""></a>
@@ -14,8 +14,15 @@ homeProduit.innerHTML = ` <div class="col-lg-4 col-md-6 mb-4">
                               </div>
                             </div>
                           </div>`;
+console.log(homeProduit);
 
-
+/*let nomProd =  document.querySelector("#containerProduct");
+nomProd.innerHTML = "petit ourson";
+console.log (nomProd);*/
+/*let nomOurs = document.querySelector("#containerProduct h4 > a");
+nomOurs.innerHTML = "petite pelluche";
+console.log(nomOurs)*/
+                         
 fetch ('http://localhost:3000/api/teddies')
 .then (response => response.json ())
 .then (
@@ -27,15 +34,133 @@ fetch ('http://localhost:3000/api/teddies')
     let thirdOurson = products[2];
     let quatreOurson = products[3];
     let cinqOurson = products[4];
-    console.log(premierOurson);
-    console.log(premierOurson.name);
-    console.log(cinqOurson.name);
+    //console.log(premierOurson);
+    //console.log(premierOurson.name);
+    //console.log(cinqOurson.name);
     for ( let product of products) {
       console.log(product.name);
+      /*let produitAccueil = document.getElementsByClassName('card-title');
+      produitAccueil.innerHTML = product.name;
+      //produitAccueil.innerHTML += product.name;
+      console.log(produitAccueil);*/
+
+      let productHome = document.querySelector(".containerProduct h4 > a");
+      productHome.innerHTML += product.name;
+      //productHome.innerHTML += '<li>'+ product.name+ '<li>';
+      console.log(productHome);
     }
   }
-  
 );
+
+/*exercice entrainement jour de la semaine
+
+let dayTab = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'] ;
+for ( let day of dayTab) {
+  console.log(day);
+};
+for (let i = 0; i < dayTab.length; i++) {
+console.log(dayTab[i]);
+};*/
+
+//exercice entrainement saisons
+
+/*let saisonOne = {
+  name:'Hiver',
+  nameOfMonth:['Décembre','Janvier','Février']
+};
+//console.log(saisonOne);
+let saisonTwo = {
+  name:'Printemps',
+  nameOfMonth:['Mars','Avril','Mai']
+};
+//console.log(saisonTwo);
+let saisonThree = {
+  name:'Eté',
+  nameOfMonth:['Juin','Juillet','Aout']
+};
+//console.log(saisonThree);
+let saisonFor = {
+  name:'Automne',
+  nameOfMonth:['Septembre','Octobre','Novembre']
+};
+//console.log(saisonFor);
+let tabSaisons = [saisonOne, saisonTwo, saisonThree, saisonFor];
+for(let saison of tabSaisons) {
+  console.log(saison.name);
+  for( let month of saison.nameOfMonth){
+    console.log(month);
+  }
+}*/
+
+//autre essai 2
+/*let saisons = [
+  {
+    name:'Hiver',
+    month:['Décembre','Janvier','Février'],
+  },
+  {
+    name:'Printemps',
+    month:['Mars','Avril','Mai'],
+  
+  },
+  {
+    name:'Eté',
+    month:['Juin','Juillet','Aout'],
+  },
+  {
+    name:'Automne',
+    month:['Septembre','Octobre','Novembre'],
+  },
+];
+console.log(saisons);
+for (let saison of saisons){
+  console.log(saison.name + saison.month);
+};
+for ( let i=0; i<saisons.length; i++){
+  console.log(saisons[i]);
+};
+for ( saison of saisons){
+  console.log(saison.name + saison.nameOfMonth);
+}
+;
+
+/*let saisonName = saisons.name;
+console.log(saisonName);
+let saisonMonth = saisons.month;
+console.log(saisonMonth);*/
+
+//autre essai3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /*let nameProduct = ;
     console.log(nameProduct);
