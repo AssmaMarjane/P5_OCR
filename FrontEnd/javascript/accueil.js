@@ -33,12 +33,13 @@ fetch ('http://localhost:3000/api/teddies')
       let homeProduit = document.querySelector("#containerProduct");
       homeProduit.innerHTML += ` <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
-                              <a href="#"><img class="card-img-top" src="" alt=""></a>
+                              <a href="#"><img class="card-img-top" src="`+product.imageUrl+`" alt=""></a>
                               <div class="card-body">
                                 <h4 class="card-title">
                                   <a href="#"> `+product.name+ `</a>
                                 </h4>
-                                <p class="card-text"></p>
+                                <p class="card-text">`+product.price+`</p>
+                                <p class="card-text">`+product.description+`</p>
                               </div>
                             </div>
                           </div>`;
