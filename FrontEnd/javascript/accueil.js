@@ -16,27 +16,15 @@ fetch ('http://localhost:3000/api/teddies')
   products => 
   {
     console.log (products);
-    let premierOurson = products[0];
-    let deuxiemeOurson = products[1];
-    let thirdOurson = products[2];
-    let quatreOurson = products[3];
-    let cinqOurson = products[4];
-    //console.log(premierOurson);
-    //console.log(premierOurson.name);
-    //console.log(cinqOurson.name);
     for ( let product of products) {
       console.log(product.name);
-      /*let produitAccueil = document.getElementsByClassName('card-title');
-      produitAccueil.innerHTML = product.name;
-      //produitAccueil.innerHTML += product.name;
-      console.log(produitAccueil);*/
       let homeProduit = document.querySelector("#containerProduct");
-      homeProduit.innerHTML += ` <div class="col-lg-4 col-md-6 mb-4">
+      homeProduit.innerHTML += ` <div id="productBlock" class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
-                              <a href="#"><img class="card-img-top" src="`+product.imageUrl+`" alt=""></a>
+                              <a id="lienProduit" ><img class="card-img-top" src="`+product.imageUrl+`" alt=""></a>
                               <div class="card-body">
                                 <h4 class="card-title">
-                                  <a href="#"> `+product.name+ `</a>
+                                  <a > `+product.name+ `</a>
                                 </h4>
                                 <p class="card-text">`+product.price+`</p>
                                 <p class="card-text">`+product.description+`</p>
@@ -44,14 +32,47 @@ fetch ('http://localhost:3000/api/teddies')
                             </div>
                           </div>`;
       console.log(homeProduit);
-      /*let productHome = document.querySelector("#containerProduct h4 > a");
-      productHome.innerHTML += product.name ;*/
-      //productHome.innerHTML += '<li>'+ product.name+ '<li>';
-      //console.log(productHome);
+      //console.log(product._id);
+      const productLink = document.querySelector("#lienProduit");
+      console.log( productLink) ;   // On récupère l'élément sur lequel on veut détecter le clic
+      //productLink.onClick = function (){}
+      productLink.addEventListener( 'click' , function () {          // On écoute l'événement click
+        productLink.innerHTML += `<a href="./Contenu/produit.html"></a>`;              // On change le contenu de notre élément pour afficher "C'est cliqué !"
+        console.log( productLink );
+      });
+  
     }
   }
 );
 
+
+
+
+
+
+
+
+
+
+    /*let premierOurson = products[0];
+    let deuxiemeOurson = products[1];
+    let thirdOurson = products[2];
+    let quatreOurson = products[3];
+    let cinqOurson = products[4];*/
+    //console.log(premierOurson);
+    //console.log(premierOurson.name);
+    //console.log(cinqOurson.name);
+
+
+      /*let productHome = document.querySelector("#containerProduct h4 > a");
+      productHome.innerHTML += product.name ;*/
+      //productHome.innerHTML += '<li>'+ product.name+ '<li>';
+      //console.log(productHome);
+
+/*const elt = document.getElementById('product.name');    // On récupère l'élément sur lequel on veut détecter le clic
+elt.addEventListener('click', function() {          // On écoute l'événement click
+    elt.innerHTML = "C'est cliqué !";               // On change le contenu de notre élément pour afficher "C'est cliqué !"
+});*/
 /*exercice entrainement jour de la semaine
 
 let dayTab = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'] ;
