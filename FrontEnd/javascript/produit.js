@@ -5,20 +5,21 @@
 
 
 //recupérer l'id du produit via parametre Url cf cours
-//let produit = $_GET('_id');
-//let refproduit = $_GET('product_id');
-//console.log(produit);
-//console.log(refproduit);
+let ourson = window.location.search;
+console.log(ourson);
+/*function $_GET(param) {
+	let produit = {};
+	window.location.href. 
+		}
+	);*/
 //recupérer info produit pr page via API fetch voir fetch
-fetch ('http://localhost:3000/api/teddies/?id')
+/*fetch ('http://localhost:3000/api/teddies/?id')
 .then (response => response.json ())
 .then (
   products => 
   {
-    console.log (products);
     //données recup en json passer en HTML
     for ( let product of products) {
-      console.log(product._id);
       let myProduct = document.querySelector("#produitSelection");
       myProduct.innerHTML += `<div class="col-lg-12 col-md-6 mb-4">
                                <div class="card h-100">
@@ -31,11 +32,10 @@ fetch ('http://localhost:3000/api/teddies/?id')
                                 </div>
                            </div>`;
       console.log(myProduct);
-      console.log(product._id);
     }
   }
 );
-
+*/
 //puis option ajout produit panier "localstorage"
 /*let ourson = { `product _id` };
 localStorage.setItem('ourson', JSON.stringify(ourson));
