@@ -1,5 +1,3 @@
-//console.log("ceci est un test");
-
                          
 fetch ('http://localhost:3000/api/teddies')
 .then (response => response.json ())

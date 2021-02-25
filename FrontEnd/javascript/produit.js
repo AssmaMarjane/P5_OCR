@@ -16,7 +16,6 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
   .then(
     product => {
       //données recup en json passer en HTML
-
       let myProduct = document.querySelector("#produitSelection");
       myProduct.innerHTML += `<div class="col-lg-12 col-md-6 mb-4">
                                <div class="card h-100">
@@ -26,26 +25,31 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
                                     <p class="card-text">${product.description}</p>
                                     <p class="card-text">${product.price}</p>
                                   </div>
+                                  <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Choix Couleur
+                                    </button>
+                                    <div class= "listOfColors"></div>
+                                  </div>
                                 </div>
                              </div>`;
-      let colorOurson = product.colors ;
-      for (let colors of colorOurson) {
+      let colorTab = product.colors ;
+      console.log(colorTab);
+
+      for (let colors of colorTab) {
         console.log(colors);
+        let colorList = document.querySelector(".listOfColors");
+        colorList.innerHTML += `<div class="dropdown">
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li class="dropdown-item" > ${colors}</li>
+                                  </div>
+                                </div>`;
+        console.log(colorList);
       }
     }
 
   );
 /*
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Choix Couleur
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Couleur</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
 */
 
 //puis option ajout produit panier "localstorage"
