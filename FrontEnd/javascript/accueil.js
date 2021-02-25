@@ -1,14 +1,5 @@
 //console.log("ceci est un test");
 
-/*let homeProduit = document.getElementById("containerProduct");
-console.log(homeProduit);*/
-
-/*let nomProd =  document.querySelector("#containerProduct");
-nomProd.innerHTML = "petit ourson";
-console.log (nomProd);*/
-/*let nomOurs = document.querySelector("#containerProduct h4 > a");
-nomOurs.innerHTML = "petite pelluche";
-console.log(nomOurs)*/
                          
 fetch ('http://localhost:3000/api/teddies')
 .then (response => response.json ())
@@ -33,7 +24,17 @@ fetch ('http://localhost:3000/api/teddies')
                           </div>`;
       console.log(homeProduit);
       console.log(product._id);
-      /*let ourson = { recupere id, product name,  };
+    }
+  }
+);
+
+
+
+
+
+
+
+/*let ourson = { recupere id, product name,  };
       localStorage.setItem('ourson', JSON.stringify(ourson));
       
       const productLink = document.querySelector("lienProduit");
@@ -42,14 +43,17 @@ fetch ('http://localhost:3000/api/teddies')
       productLink.addEventListener( 'click' , function () {          // On écoute l'événement click
         productLink.innerHTML += `<a href="./Contenu/produit.html"></a>`;              // On change le contenu de notre élément pour afficher "C'est cliqué !"
         console.log( productLink );
-      });*/
-    }
-  }
-);
+      });
+*/
+/*let homeProduit = document.getElementById("containerProduct");
+console.log(homeProduit);*/
 
-
-
-
+/*let nomProd =  document.querySelector("#containerProduct");
+nomProd.innerHTML = "petit ourson";
+console.log (nomProd);*/
+/*let nomOurs = document.querySelector("#containerProduct h4 > a");
+nomOurs.innerHTML = "petite pelluche";
+console.log(nomOurs)*/
 
 
 

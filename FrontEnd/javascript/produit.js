@@ -5,21 +5,18 @@
 
 
 //recupérer l'id du produit via parametre Url cf cours
-let ourson = window.location.search;
-console.log(ourson);
-/*function $_GET(param) {
-	let produit = {};
-	window.location.href. 
-		}
-	);*/
+const urlProduct = window.location.search;
+const urlParams = new URLSearchParams(urlProduct);
+const idProduct = urlParams.get('id');
+
 //recupérer info produit pr page via API fetch voir fetch
-/*fetch ('http://localhost:3000/api/teddies/?id')
-.then (response => response.json ())
-.then (
-  products => 
-  {
-    //données recup en json passer en HTML
-    for ( let product of products) {
+
+fetch('http://localhost:3000/api/teddies/' + idProduct)
+  .then(response => response.json())
+  .then(
+    product => {
+      //données recup en json passer en HTML
+
       let myProduct = document.querySelector("#produitSelection");
       myProduct.innerHTML += `<div class="col-lg-12 col-md-6 mb-4">
                                <div class="card h-100">
@@ -28,15 +25,31 @@ console.log(ourson);
                                     <h4 class="card-title"> ${product.name}</h4>
                                     <p class="card-text">${product.description}</p>
                                     <p class="card-text">${product.price}</p>
-                                    </div>
+                                  </div>
                                 </div>
-                           </div>`;
-      console.log(myProduct);
+                             </div>`;
+      let colorOurson = product.colors ;
+      for (let colors of colorOurson) {
+        console.log(colors);
+      }
     }
-  }
-);
+
+  );
+/*
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Choix Couleur
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Couleur</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
 */
+
 //puis option ajout produit panier "localstorage"
+
 /*let ourson = { `product _id` };
 localStorage.setItem('ourson', JSON.stringify(ourson));
 */
