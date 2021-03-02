@@ -25,32 +25,33 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
                                     <p class="card-text">${product.description}</p>
                                     <p class="card-text">${product.price}</p>
                                   </div>
-                                  <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      Choix Couleur
-                                    </button>
-                                    <div class= "listOfColors"></div>
-                                  </div>
+                                  <form class="form-inline">
+                                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Couleurs</label>
+                                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                                      <option selected></option>
+                                    </select>
+
+                                    <button id="boutonPanier" type="button" class="btn btn-primary">Ajouter au panier</button>
+
+                                  </form>
                                 </div>
                              </div>`;
-      let colorTab = product.colors ;
-      console.log(colorTab);
-
-      for (let colors of colorTab) {
-        console.log(colors);
-        let colorList = document.querySelector(".listOfColors");
-        colorList.innerHTML += `<div class="dropdown">
-                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li class="dropdown-item" > ${colors}</li>
-                                  </div>
-                                </div>`;
-        console.log(colorList);
+      for (let color of product.colors) {
+        let colorList = document.querySelector("#inlineFormCustomSelectPref");
+        colorList.innerHTML += ` <option value="${color}">${color}</option>`;
+        
       }
+      const boutonAjout = document.querySelector('#boutonPanier');    
+      boutonAjout.addEventListener('click', function () {         
+        boutonAjout.innerHTML = "Produit ajouté au panier!";   
+        console.log(boutonAjout);   
+                //recuperer la valeur de loption au click ajouter au panier/recuperer la couleur selectionnée
+        //stocker tous les produits en localStorage le produit et sa valeur couleur selectionné + ajout panier
+         
+      });
     }
 
   );
-/*
-*/
 
 //puis option ajout produit panier "localstorage"
 
