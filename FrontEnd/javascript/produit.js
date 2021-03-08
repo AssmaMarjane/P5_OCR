@@ -56,9 +56,12 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
       //console.log(produitChoisi);
 
       let optionCouleur = document.getElementById("inlineFormCustomSelectPref");
-      let produitChoisi = optionCouleur.options[optionCouleur.selectedIndex].value[0];
+      let produitChoisi = optionCouleur.options[optionCouleur.selectedIndex].value;
       console.log(optionCouleur);
       console.log(produitChoisi);
+      localStorage.setItem('produitChoisi', JSON.stringify(produitChoisi));
+      console.log(localStorage);
+
     }
 
   );

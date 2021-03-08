@@ -1,1 +1,3 @@
-console.log("ceci est un test");
+
+localStorage.getItem('produitChoisi', JSON.stringify(produitChoisi));
+console.log(localStorage);
