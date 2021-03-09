@@ -17,14 +17,14 @@ fetch('http://localhost:3000/api/teddies/')
                                     <a href="#" class="list-group-item list-group-item-action">Ourson3</a>
                                     <a href="#" class="list-group-item list-group-item-action disabled">Total</a>
                                 </div>
-                                <button id="boutonPanier" type="button" class="btn btn-primary"> Valider la commande </button>
+                                <button id="boutonCommande" type="button" class="btn btn-primary"> Valider la commande </button>
 
                              </div>`;
      /* for (let  of ) {
         let  = document.querySelector("#");
         .innerHTML += ` `; 
         } ; */
-      const boutonValidation = document.querySelector('#boutonPanier');    
+      const boutonValidation = document.querySelector('#boutonCommande');    
       boutonValidation.addEventListener('click', function () {         
         boutonValidation.innerHTML = "Commande validée!";   
         console.log(boutonValidation);   

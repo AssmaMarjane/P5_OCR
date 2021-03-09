@@ -1,4 +1,3 @@
-
 //a tester pour recuperer requete page produit
 //http://localhost:3000/api/teddies/5be9c8541c9d440000665243 requete Url avec -id récupéré
 
@@ -31,7 +30,6 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
                                   <form class="form-inline">
                                     <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Couleurs</label>
                                     <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                                      <option selected></option>
                                     </select>
                                     <button id="boutonPanier" type="button" class="btn btn-primary">Ajouter au panier</button>
                                   </form>
@@ -39,28 +37,31 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
                                 </div>
 
                               </div>`;
+      // boucle permettant d'afficher les différentes couleurs dans tableau product
       for (let color of product.colors) {
         let colorList = document.querySelector("#inlineFormCustomSelectPref");
         colorList.innerHTML += ` <option value="${color}">${color}</option>`;
+      }
+
+      const boutonAjout = document.querySelector('#boutonPanier');
+      boutonAjout.addEventListener('click', function () { 
+        let optionCouleur = document.getElementById("inlineFormCustomSelectPref");
+        console.log(optionCouleur);
+        let produitChoisi = optionCouleur.options[optionCouleur.selectedIndex].value;
+        console.log(produitChoisi);
+        boutonAjout.innerHTML = "Produit ajouté au panier!";
+        console.log(boutonAjout);
+        localStorage.setItem('produitChoisi', JSON.stringify(produitChoisi));
+        //ajouter plusieurs produits-> ajouter les selections dans tableau (si tab existant à compléter)
+        console.log(localStorage);
   
-      };
-      const boutonAjout = document.querySelector('#boutonPanier');    
-      boutonAjout.addEventListener('click', function () {         
-        boutonAjout.innerHTML = "Produit ajouté au panier!";   
-        console.log(boutonAjout);   
-                //recuperer la valeur de loption au click ajouter au panier/recuperer la couleur selectionnée
+        //recuperer la valeur de loption au click ajouter au panier/recuperer la couleur selectionnée
         //stocker tous les produits en localStorage le produit et sa valeur couleur selectionné + ajout panier
-         
       });
       //let produitChoisi = document.querySelector("#inlineFormCustomSelectPref").option;
       //console.log(produitChoisi);
 
-      let optionCouleur = document.getElementById("inlineFormCustomSelectPref");
-      let produitChoisi = optionCouleur.options[optionCouleur.selectedIndex].value;
-      console.log(optionCouleur);
-      console.log(produitChoisi);
-      localStorage.setItem('produitChoisi', JSON.stringify(produitChoisi));
-      console.log(localStorage);
+      //return optionCouleur.options[optionCouleur.selectedIndex].value;
 
     }
 
@@ -72,4 +73,3 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
 localStorage.setItem('ourson', JSON.stringify(ourson));
 */
 //let listProduct = localStorage.get
-
