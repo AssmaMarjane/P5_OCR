@@ -37,7 +37,7 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
                                 </div>
 
                               </div>`;
-      // boucle permettant d'afficher les différentes couleurs dans tableau product
+      // boucle permettant d'afficher les différentes couleurs dans le tableau product
       for (let color of product.colors) {
         let colorList = document.querySelector("#inlineFormCustomSelectPref");
         colorList.innerHTML += ` <option value="${color}">${color}</option>`;
@@ -45,31 +45,22 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
 
       const boutonAjout = document.querySelector('#boutonPanier');
       boutonAjout.addEventListener('click', function () { 
+        //recuperer la valeur de loption au click "ajouter au panier" pour recuperer la couleur selectionnée
         let optionCouleur = document.getElementById("inlineFormCustomSelectPref");
-        console.log(optionCouleur);
-        let produitChoisi = optionCouleur.options[optionCouleur.selectedIndex].value;
-        console.log(produitChoisi);
+        //console.log(optionCouleur);
+        let couleurChoisi = optionCouleur.options[optionCouleur.selectedIndex].value;
+        //console.log(couleurChoisi);
         boutonAjout.innerHTML = "Produit ajouté au panier!";
-        console.log(boutonAjout);
-        localStorage.setItem('produitChoisi', JSON.stringify(produitChoisi));
-        //ajouter plusieurs produits-> ajouter les selections dans tableau (si tab existant à compléter)
-        console.log(localStorage);
-  
-        //recuperer la valeur de loption au click ajouter au panier/recuperer la couleur selectionnée
+        //console.log(boutonAjout);
         //stocker tous les produits en localStorage le produit et sa valeur couleur selectionné + ajout panier
+        let monTableau =  {idProduct, couleurChoisi};
+        localStorage.setItem('monTableau', JSON.stringify(monTableau));
+        console.log(localStorage);
+        //ajouter plusieurs produits-> ajouter les selections dans tableau (si tab existant à compléter)
+
       });
-      //let produitChoisi = document.querySelector("#inlineFormCustomSelectPref").option;
-      //console.log(produitChoisi);
-
       //return optionCouleur.options[optionCouleur.selectedIndex].value;
-
     }
-
   );
 
-//puis option ajout produit panier "localstorage"
-
-/*let ourson = { `product _id` };
-localStorage.setItem('ourson', JSON.stringify(ourson));
-*/
 //let listProduct = localStorage.get
