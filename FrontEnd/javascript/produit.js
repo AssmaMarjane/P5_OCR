@@ -42,19 +42,23 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
         let colorList = document.querySelector("#inlineFormCustomSelectPref");
         colorList.innerHTML += ` <option value="${color}">${color}</option>`;
       }
-
+      let tabProduct = [];
+      if(localStorage.getItem('monTableau') !==null){tabProduct = JSON.parse(localStorage.getItem('monTableau'));} else {
+        tabProduct = [];
+      }
       const boutonAjout = document.querySelector('#boutonPanier');
       boutonAjout.addEventListener('click', function () { 
         //recuperer la valeur de loption au click "ajouter au panier" pour recuperer la couleur selectionnée
         let optionCouleur = document.getElementById("inlineFormCustomSelectPref");
-        //console.log(optionCouleur);
         let couleurChoisi = optionCouleur.options[optionCouleur.selectedIndex].value;
-        //console.log(couleurChoisi);
         boutonAjout.innerHTML = "Produit ajouté au panier!";
-        //console.log(boutonAjout);
         //stocker tous les produits en localStorage le produit et sa valeur couleur selectionné + ajout panier
-        let monTableau =  {idProduct, couleurChoisi};
-        localStorage.setItem('monTableau', JSON.stringify(monTableau));
+        let newProduct = {
+          produit :idProduct, 
+          couleur : couleurChoisi
+        }
+        tabProduct.push(newProduct);
+        localStorage.setItem('monTableau', JSON.stringify(tabProduct));
         console.log(localStorage);
         //ajouter plusieurs produits-> ajouter les selections dans tableau (si tab existant à compléter)
 
