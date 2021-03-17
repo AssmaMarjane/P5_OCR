@@ -29,7 +29,8 @@ fetch('http://localhost:3000/api/teddies/')
         boutonValidation.innerHTML = "Commande validée!";   
         console.log(boutonValidation);   
       });
-
+      localStorage.getItem('monTableau', JSON.stringify('monTableau'));
+      console.log(localStorage);
 
     }
 
