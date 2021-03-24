@@ -42,8 +42,10 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
         let colorList = document.querySelector("#inlineFormCustomSelectPref");
         colorList.innerHTML += ` <option value="${color}">${color}</option>`;
       }
+      //tableau pour localstorage 
       let tabProduct = [];
-      if(localStorage.getItem('monTableau') !==null){tabProduct = JSON.parse(localStorage.getItem('monTableau'));} else {
+      //condition pour charger le tableau vide ou plein 
+      if(localStorage.getItem('monTableau') !== null){tabProduct = JSON.parse(localStorage.getItem('monTableau'));} else {
         tabProduct = [];
       }
       const boutonAjout = document.querySelector('#boutonPanier');
@@ -51,12 +53,15 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
         //recuperer la valeur de loption au click "ajouter au panier" pour recuperer la couleur selectionnée
         let optionCouleur = document.getElementById("inlineFormCustomSelectPref");
         let couleurChoisi = optionCouleur.options[optionCouleur.selectedIndex].value;
-        boutonAjout.innerHTML = "Produit ajouté au panier!";
+        //boite dialogue au click de l'ajout
+        alert ("Produit ajouté au panier!");
         //stocker tous les produits en localStorage le produit et sa valeur couleur selectionné + ajout panier
+        //creer objet pour stocker les deux valeur dans le tableau en local storage
         let newProduct = {
           produit :idProduct, 
           couleur : couleurChoisi
         }
+        //ensuite ajout si il y a nouveaux produits avec push
         tabProduct.push(newProduct);
         localStorage.setItem('monTableau', JSON.stringify(tabProduct));
         console.log(localStorage);

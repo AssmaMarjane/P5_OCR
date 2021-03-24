@@ -1,18 +1,30 @@
 // recuperer le tableau localStorage
 // localStorage.getItem('produitChoisi', JSON.stringify(produitChoisi));
 // console.log(localStorage);
+let tabPanier = localStorage.getItem('monTableau');
+console.log(tabPanier);
+console.log ( JSON.parse(tabPanier));
+
+for ( let produit of JSON.parse(tabPanier)){
+  console.log (produit)
+}
+//boucler les produits puis récupérer les infos pour chaque roduits> fetch ciblé par produit cf page produit pour le fetch ciblé
+//faire travail template pr ficher les produit proprement
+
+
 
 fetch('http://localhost:3000/api/teddies/')
   .then(response => response.json())
   .then(
     product => {
+
       //données recup en json passer en HTML
       let myProduct = document.querySelector("#listPanier");
       myProduct.innerHTML += `<div class="col-lg-12 col-md-6 mb-4">
 
                                 <div class="list-group">
                                     <a href="#" class="list-group-item list-group-item-action active">Ourson</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Ourson1</a>
+                                    <a href="#" class="list-group-item list-group-item-action"></a>
                                     <a href="#" class="list-group-item list-group-item-action">Ourson2</a>
                                     <a href="#" class="list-group-item list-group-item-action">Ourson3</a>
                                     <a href="#" class="list-group-item list-group-item-action disabled">Total</a>
@@ -29,8 +41,6 @@ fetch('http://localhost:3000/api/teddies/')
         boutonValidation.innerHTML = "Commande validée!";   
         console.log(boutonValidation);   
       });
-      localStorage.getItem('monTableau', JSON.stringify('monTableau'));
-      console.log(localStorage);
 
     }
 
