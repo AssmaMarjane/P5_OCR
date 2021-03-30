@@ -3,7 +3,19 @@ let tabPanier = localStorage.getItem('monTableau');
 //console.log(tabPanier);
 //console.log ( JSON.parse(tabPanier));
 //boucler les produits puis récupérer les infos pour chaque produits
+//creer compteur somme qui part donc de zero 
+let totalProduits = 0;
+/*5 + 10 + 15 
+x = 0
+a = 5
+x = x+a = 5
+b = 10
+x = x+ b = 15
+c =15
+x = x + c = 30 */
+
 for ( let produits of JSON.parse(tabPanier)){
+
   //console.log (produits)
   let idOfProduct = produits.produit ; 
   let colorOfProduct = produits.couleur;
@@ -12,7 +24,9 @@ for ( let produits of JSON.parse(tabPanier)){
   .then(response => response.json())
   .then(
     product => {
+      //let montantTotal = totalProduits +  ;
 
+      console.log();
       //données recup en json passer en HTML
       let myProduct = document.querySelector("#listPanier");
       myProduct.innerHTML += `<!--Section: Block Content-->
@@ -66,14 +80,11 @@ for ( let produits of JSON.parse(tabPanier)){
                               
                                   <!--Grid column-->
                                   <div class="col-lg-4">
-                              
-                              
-                              
                                   </div>
                                   <!--Grid column-->
-                              
                                 </div>
                                 <!-- Grid row -->
+                                
                               
                               </section>
                               <!--Section: Block Content-->`;
@@ -84,8 +95,13 @@ for ( let produits of JSON.parse(tabPanier)){
 
 
 } ; 
-// fetch ciblé par produit cf page produit pour le fetch ciblé
-//faire travail template pr ficher les produit proprement
+
+
+
+
+
+
+
 
 /*const boutonValidation = document.querySelector('#boutonCommande');    
 boutonValidation.addEventListener('click', function () {         
@@ -203,3 +219,5 @@ boutonValidation.addEventListener('click', function () {
                                                   </small>
                                                 </div>
 */
+//creer evenement sur boutn validée commande
+//voir la methode fetch pr envoi de la comande et revoir la doc
