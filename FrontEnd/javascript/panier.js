@@ -4,7 +4,6 @@ let tabPanier = localStorage.getItem('monTableau');
 //console.log ( JSON.parse(tabPanier));
 //boucler les produits puis récupérer les infos pour chaque produits
 //creer compteur somme qui part donc de zero 
-let totalProduits = 0;
 /*5 + 10 + 15 
 x = 0
 a = 5
@@ -13,6 +12,7 @@ b = 10
 x = x+ b = 15
 c =15
 x = x + c = 30 */
+let totalProduits = 0 ;
 
 for ( let produits of JSON.parse(tabPanier)){
 
@@ -24,9 +24,6 @@ for ( let produits of JSON.parse(tabPanier)){
   .then(response => response.json())
   .then(
     product => {
-      //let montantTotal = totalProduits +  ;
-
-      console.log();
       //données recup en json passer en HTML
       let myProduct = document.querySelector("#listPanier");
       myProduct.innerHTML += `<!--Section: Block Content-->
@@ -88,6 +85,11 @@ for ( let produits of JSON.parse(tabPanier)){
                               
                               </section>
                               <!--Section: Block Content-->`;
+    totalProduits = totalProduits + product.price 
+    console.log(totalProduits);
+    let mySum = document.querySelector("#prixTotal");
+    mySum.innerHTML += `<strong>${totalProduits}$</strong>`;
+                        
 
     }
 
