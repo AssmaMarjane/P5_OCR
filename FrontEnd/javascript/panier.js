@@ -89,7 +89,12 @@ for ( let produits of JSON.parse(tabPanier)){
     console.log(totalProduits);
     let mySum = document.querySelector("#prixTotal");
     mySum.innerHTML += `<strong>${totalProduits}$</strong>`;
-                        
+    const boutonValidation = document.querySelector('#boutonCommande');    
+    boutonValidation.addEventListener('click', function () {         
+    boutonValidation.innerHTML = "Commande validée!";   
+     console.log(boutonValidation);   
+    });
+                    
 
     }
 
