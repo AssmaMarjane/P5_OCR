@@ -85,7 +85,7 @@ for ( let produits of JSON.parse(tabPanier)){
                               
                               </section>
                               <!--Section: Block Content-->`;
-    totalProduits = totalProduits + product.price 
+    totalProduits +=  product.price ;
     console.log(totalProduits);
     let mySum = document.querySelector("#prixTotal");
     mySum.innerHTML += `<strong>${totalProduits}$</strong>`;
