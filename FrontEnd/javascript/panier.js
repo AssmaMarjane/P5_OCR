@@ -1,19 +1,9 @@
 // recuperer le tableau localStorage
 let tabPanier = localStorage.getItem('monTableau');
 //console.log(tabPanier);
-//console.log ( JSON.parse(tabPanier));
 //boucler les produits puis récupérer les infos pour chaque produits
-//creer compteur somme qui part donc de zero 
-/*5 + 10 + 15 
-x = 0
-a = 5
-x = x+a = 5
-b = 10
-x = x+ b = 15
-c =15
-x = x + c = 30 */
 let totalProduits = 0 ;
-
+let products = [] ;
 for ( let produits of JSON.parse(tabPanier)){
 
   //console.log (produits)
@@ -86,35 +76,79 @@ for ( let produits of JSON.parse(tabPanier)){
                               </section>
                               <!--Section: Block Content-->`;
     totalProduits +=  product.price ;
-    console.log(totalProduits);
+    //console.log(totalProduits);
     let mySum = document.querySelector("#prixTotal");
-    mySum.innerHTML += `<strong>${totalProduits}$</strong>`;
-    const boutonValidation = document.querySelector('#boutonCommande');    
-    boutonValidation.addEventListener('click', function () {         
-    boutonValidation.innerHTML = "Commande validée!";   
-     console.log(boutonValidation);   
-    });
-                    
-
+    mySum.innerHTML = `<strong>${totalProduits}$</strong>`;
     }
-
+    
   );
-
-
-} ; 
-
-
-
-
-
-
-
-
-/*const boutonValidation = document.querySelector('#boutonCommande');    
+  products.push(idOfProduct);
+} ;
+console.log (products);
+const boutonValidation = document.querySelector('#boutonCommande');    
 boutonValidation.addEventListener('click', function () {         
-  boutonValidation.innerHTML = "Commande validée!";   
-  console.log(boutonValidation);   
-});*/
+boutonValidation.innerHTML = "Commande validée!";
+console.log(boutonValidation);   
+});
+
+/*alert (
+  `<form name="formulaireClient">
+
+     <div class="form__group">
+     <label for="firstname">Nom</label>
+     <input type="text" id="nom" name="nom" />
+
+     <label for="lastname">Prénom</label>
+     <input type="text" id="prenom" name="prenom" />
+     </div>
+
+     <div class="form__group">
+     <label for="adresse">Adresse 1</label>
+     <input id="adresse" type="text" name="nomAdr" />
+  </form> `
+);  */ 
+
+
+//creer une variable pr stocker le tableau des produits avant la boucle 
+//paramtrer le tableau dans la boucle
+//console log en dessous de la boucle
+
+/*fetch('http://localhost:3000/api/teddies/',{
+  method: "POST", body* contact et product
+} )
+  .then(response => response.json())
+  -> 
+  -> spécifications renvoyer tableau avec id produits à API: body doit contenir les 2 éléments du contain contact et product
+/**
+ *
+ * Expects request to contain:
+ * contact: {
+ *   firstName: string,
+ *   lastName: string,
+ *   address: string,
+ *   city: string,
+ *   email: string
+ * }
+ * products: [string] <-- array of product _id
+ *
+ * au click creer objet contact qui recp donnée form 
+ * et creer tableau product qui recupere uniqmt id des produits
+ * test console
+ *  puis preparer le fetche et methode post 
+ * et voir les données retournées contenant info voir surtout orderid
+ */
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*                                    <!-- Card -->

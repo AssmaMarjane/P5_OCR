@@ -1,9 +1,4 @@
-//a tester pour recuperer requete page produit
-//http://localhost:3000/api/teddies/5be9c8541c9d440000665243 requete Url avec -id récupéré
-
-
-
-//recupérer l'id du produit via parametre Url cf cours
+//recupérer l'id du produit via parametre Url 
 const urlProduct = window.location.search;
 const urlParams = new URLSearchParams(urlProduct);
 const idProduct = urlParams.get('id');
@@ -26,7 +21,6 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
                                     <p class="card-text">${product.description}</p>
                                     <p class="card-text">${product.price}</p>
                                   </div>
-
                                   <form class="form-inline">
                                     <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Couleurs</label>
                                     <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
