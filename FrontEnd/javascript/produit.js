@@ -60,7 +60,6 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
         localStorage.setItem('monTableau', JSON.stringify(tabProduct));
         console.log(localStorage);
         //ajouter plusieurs produits-> ajouter les selections dans tableau (si tab existant à compléter)
-
       });
       //return optionCouleur.options[optionCouleur.selectedIndex].value;
     }
