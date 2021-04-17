@@ -85,7 +85,8 @@ for ( let produits of JSON.parse(tabPanier)){
   products.push(idOfProduct);
 } ;
 console.log (products);
-const boutonValidation = document.querySelector('#boutonCommande');    
+const boutonValidation = document.querySelector('#boutonCommande'); 
+// creer fonction puis lappeler pr le button commande,    
 boutonValidation.addEventListener('click', function () {         
 boutonValidation.innerHTML = `
           <form class="needs-validation" novalidate>
