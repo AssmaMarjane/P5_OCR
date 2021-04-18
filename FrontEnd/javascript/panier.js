@@ -101,17 +101,17 @@ monFormulaire.innerHTML = `
                           <div class="form-row">
                               <div class="col-md-6 mb-3">
                                 <label for="validationTooltip03">Adresse</label>
-                                <input type="text" class="form-control" id="address"  required>
+                                <input type="text" class="form-control" id="address" value="" required>
                               </div>
                               <div class="col-md-3 mb-3">
                                 <label for="validationTooltip04">Ville</label>
-                                <input type="text" class="form-control" id="city"  required>
+                                <input type="text" class="form-control" id="city" value="" required>
                               </div>
                           </div>
                           <div class="col-md-4 mb-3">
                             <label for="validationTooltipUsername">Email</label>
                             <div class="input-group">
-                              <input type="text" class="form-control" id="email"  aria-describedby="validationTooltipUsernamePrepend" required>
+                              <input type="text" class="form-control" id="email"  value="" required>
                             </div>
                           </div>
                         </form>`;
@@ -123,6 +123,12 @@ boutonValidation.addEventListener('click', function () {
   let address = document.querySelector ('#address');
   let city = document.querySelector ('#city');
   let email = document.querySelector ('#email');
+  if(firstName.value == "") {
+    alert("Saisissez le nom");
+  }
+  else {
+    console.log("ok");
+  }
 
   let contact = {
     firstName: firstName.value,
@@ -134,36 +140,19 @@ boutonValidation.addEventListener('click', function () {
   console.log(contact);
   
 //boutonValidation.innerHTML = ``
+//alert ("Commande validée avec succés!")
+/*fetch('http://localhost:3000/api/teddies/' + products + contact , {
+  method: "POST", 
+  body : JSON.stringify (products , contact)
+} )
+  //.then(response => response.json())
+  .then(console.log, console.error)
+  ;
+*/
 });
-//console.log(boutonValidation);
 ;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//creer une variable pr stocker le tableau des produits avant la boucle 
-//paramtrer le tableau dans la boucle
-//console log en dessous de la boucle
-
-/*fetch('http://localhost:3000/api/teddies/',{
-  method: "POST", body* contact et product
-} )
-  .then(response => response.json())
-  -> 
-  -> spécifications renvoyer tableau avec id produits à API: body doit contenir les 2 éléments du contain contact et product
 /**
  *
  * Expects request to contain:
@@ -176,11 +165,19 @@ boutonValidation.addEventListener('click', function () {
  * }
  * products: [string] <-- array of product _id
  *
- * au click  qui recp donnée form objet contact 
- * et creer tableau product qui recupere uniqmt id des produits
- * test console
  *  puis preparer le fetche et methode post 
  * et voir les données retournées contenant info voir surtout orderid
  */
 
-//voir la methode fetch pr envoi de la comande et revoir la doc
+  /*function validation () {
+    // si la valeur du champ prenom est non vide
+    if(firstName.value != "") {
+      // alors console
+      console.log("ok");
+    }
+    else {
+      // sinon on affiche un message
+      alert("Saisissez le nom");
+    }
+  } ;*/
+
