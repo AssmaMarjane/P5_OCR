@@ -91,21 +91,21 @@ monFormulaire.innerHTML = `
                           <div class="form-row">
                             <div class="col-md-4 mb-3">
                               <label for="validationTooltip01">Nom</label>
-                              <input type="text" class="form-control" id="firstname"  value="" required>
+                              <input type="text" class="form-control" name ="firstname" id="firstname" required value="">
                             </div>
                             <div class="col-md-4 mb-3">
                               <label for="validationTooltip02">Prénom</label>
-                              <input type="text" class="form-control" id="lastname" value="" required>
+                              <input type="text" class="form-control" id="lastname" required value="">
                             </div>
                           </div>
                           <div class="form-row">
                               <div class="col-md-6 mb-3">
                                 <label for="validationTooltip03">Adresse</label>
-                                <input type="text" class="form-control" id="address" value="" required>
+                                <input type="text" class="form-control" id="address"  required value="">
                               </div>
                               <div class="col-md-3 mb-3">
                                 <label for="validationTooltip04">Ville</label>
-                                <input type="text" class="form-control" id="city" value="" required>
+                                <input type="text" class="form-control" id="city" required value="">
                               </div>
                           </div>
                           <div class="col-md-4 mb-3">
@@ -123,8 +123,33 @@ boutonValidation.addEventListener('click', function () {
   let address = document.querySelector ('#address');
   let city = document.querySelector ('#city');
   let email = document.querySelector ('#email');
+
   if(firstName.value == "") {
-    alert("Saisissez le nom");
+    alert("Saisissez votre nom");
+  }
+  else {
+    console.log("ok");
+  }
+  if(lastName.value == "") {
+    alert("Saisissez votre prénom");
+  }
+  else {
+    console.log("ok");
+  }
+  if(address.value == "") {
+    alert("Saisissez votre adresse");
+  }
+  else {
+    console.log("ok");
+  }
+  if(city.value == "") {
+    alert("Saisissez la ville");
+  }
+  else {
+    console.log("ok");
+  }
+  if(email.value == "") {
+    alert("Saisissez votre email");
   }
   else {
     console.log("ok");
