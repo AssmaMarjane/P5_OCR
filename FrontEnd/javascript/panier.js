@@ -1,6 +1,5 @@
 // recuperer le tableau localStorage
 let tabPanier = localStorage.getItem('monTableau');
-//console.log(tabPanier);
 //boucler les produits puis récupérer les infos pour chaque produits
 let totalProduits = 0 ;
 let products = [] ;
@@ -85,36 +84,6 @@ for ( let produits of JSON.parse(tabPanier)){
   products.push(idOfProduct);
 } ;
 console.log (products);
-let monFormulaire = document.querySelector('#formContact');
-monFormulaire.innerHTML = `
-                        <form class="needs-validation" novalidate>
-                          <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                              <label for="validationTooltip01">Nom</label>
-                              <input type="text" class="form-control" name ="firstname" id="firstname" required value="">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                              <label for="validationTooltip02">Prénom</label>
-                              <input type="text" class="form-control" id="lastname" required value="">
-                            </div>
-                          </div>
-                          <div class="form-row">
-                              <div class="col-md-6 mb-3">
-                                <label for="validationTooltip03">Adresse</label>
-                                <input type="text" class="form-control" id="address"  required value="">
-                              </div>
-                              <div class="col-md-3 mb-3">
-                                <label for="validationTooltip04">Ville</label>
-                                <input type="text" class="form-control" id="city" required value="">
-                              </div>
-                          </div>
-                          <div class="col-md-4 mb-3">
-                            <label for="validationTooltipUsername">Email</label>
-                            <div class="input-group">
-                              <input type="text" class="form-control" id="email"  value="" required>
-                            </div>
-                          </div>
-                        </form>`;
 const boutonValidation = document.querySelector('#boutonCommande'); 
 // creer fonction puis lappeler pr le button commande,   
 boutonValidation.addEventListener('click', function () { 
@@ -124,48 +93,22 @@ boutonValidation.addEventListener('click', function () {
   let city = document.querySelector ('#city');
   let email = document.querySelector ('#email');
 
-  if(firstName.value == "") {
-    alert("Saisissez votre nom");
+  if((firstName.value.trim() == "") || (lastName.value.trim() =="")  || (address.value.trim() =="") || (city.value.trim() =="") || (email.value.trim() =="") ) {
+    alert("Veuillez remplir tous les champs");
   }
   else {
-    console.log("ok");
-  }
-  if(lastName.value == "") {
-    alert("Saisissez votre prénom");
-  }
-  else {
-    console.log("ok");
-  }
-  if(address.value == "") {
-    alert("Saisissez votre adresse");
-  }
-  else {
-    console.log("ok");
-  }
-  if(city.value == "") {
-    alert("Saisissez la ville");
-  }
-  else {
-    console.log("ok");
-  }
-  if(email.value == "") {
-    alert("Saisissez votre email");
-  }
-  else {
-    console.log("ok");
-  }
-
-  let contact = {
-    firstName: firstName.value,
-    lastName: lastName.value,
-    address: address.value,
-    city: city.value,
-    email: email.value
+    let contact = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      address: address.value,
+      city: city.value,
+      email: email.value
+    };
+    console.log(contact)
   };
-  console.log(contact);
-  
-//boutonValidation.innerHTML = ``
-//alert ("Commande validée avec succés!")
+
+  //notions opérteur logique
+  //continuer le post fecth
 /*fetch('http://localhost:3000/api/teddies/' + products + contact , {
   method: "POST", 
   body : JSON.stringify (products , contact)

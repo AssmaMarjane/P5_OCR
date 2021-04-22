@@ -79,9 +79,39 @@
             </div>
 
             <div id= "formContact">
+              <form class="needs-validation" >
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationTooltip01">Nom</label>
+                    <input type="text" class="form-control"  name ="firstname" id="firstname" required="required" value="">
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationTooltip02">Prénom</label>
+                    <input type="text" class="form-control" id="lastname" required value="">
+                  </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                      <label for="validationTooltip03">Adresse</label>
+                      <input type="text" class="form-control" id="address"  required value="">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <label for="validationTooltip04">Ville</label>
+                      <input type="text" class="form-control" id="city" required value="">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationTooltipUsername">Email</label>
+                  <div class="input-group">
+                    <input type="email" class="form-control" id="email"  value="" required>
+                  </div>
+                </div>
+                <button id="boutonCommande" type="button" class="btn btn-primary btn-block"> Valider et commander </button>
+
+              </form>
+
             </div>  
           
-            <button id="boutonCommande" type="button" class="btn btn-primary btn-block"> Valider et commander </button>
           
           </div>
 
