@@ -3,6 +3,7 @@ let tabPanier = localStorage.getItem('monTableau');
 //boucler les produits puis récupérer les infos pour chaque produits
 let totalProduits = 0 ;
 let products = [] ;
+let contact = {};
 for ( let produits of JSON.parse(tabPanier)){
 
   //console.log (produits)
@@ -93,35 +94,37 @@ boutonValidation.addEventListener('click', function () {
   let city = document.querySelector ('#city');
   let email = document.querySelector ('#email');
 
-  if((firstName.value.trim() == "") || (lastName.value.trim() =="")  || (address.value.trim() =="") || (city.value.trim() =="") || (email.value.trim() =="") ) {
-    alert("Veuillez remplir tous les champs");
-  }
-  else {
-    let contact = {
+  if((firstName.value.trim() != "") || (lastName.value.trim() !="")  || (address.value.trim() !="") || (city.value.trim() !="") || (email.value.trim() !="") ) {
+    contact = {
       firstName: firstName.value,
       lastName: lastName.value,
       address: address.value,
       city: city.value,
       email: email.value
     };
-    console.log(contact)
+    console.log(JSON.stringify ({contact , products }))
+
+  }
+  else {
+    alert("Veuillez remplir tous les champs");
+
+    //console.log(contact)
+    //console.log(products)
   };
 
-  //notions opérteur logique
-  //continuer le post fecth
-/*fetch('http://localhost:3000/api/teddies/' + products + contact , {
+fetch('http://localhost:3000/api/teddies/order', {
   method: "POST", 
-  body : JSON.stringify (products , contact)
+  body : JSON.stringify ({contact , products})
 } )
-  //.then(response => response.json())
+  .then(response => response.json())
   .then(console.log, console.error)
   ;
-*/
+
 });
 ;
 
 
-/**
+/* *
  *
  * Expects request to contain:
  * contact: {
@@ -136,16 +139,4 @@ boutonValidation.addEventListener('click', function () {
  *  puis preparer le fetche et methode post 
  * et voir les données retournées contenant info voir surtout orderid
  */
-
-  /*function validation () {
-    // si la valeur du champ prenom est non vide
-    if(firstName.value != "") {
-      // alors console
-      console.log("ok");
-    }
-    else {
-      // sinon on affiche un message
-      alert("Saisissez le nom");
-    }
-  } ;*/
 
