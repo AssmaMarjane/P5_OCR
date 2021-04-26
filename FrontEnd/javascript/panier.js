@@ -1,22 +1,23 @@
 // recuperer le tableau localStorage
 let tabPanier = localStorage.getItem('monTableau');
 //boucler les produits puis récupérer les infos pour chaque produits
-let totalProduits = 0 ;
-let products = [] ;
+let totalProduits = 0;
+let products = [];
 let contact = {};
-for ( let produits of JSON.parse(tabPanier)){
+if (tabPanier !=null){ 
+    for (let produits of JSON.parse(tabPanier)) {
 
-  //console.log (produits)
-  let idOfProduct = produits.produit ; 
-  let colorOfProduct = produits.couleur;
-  //console.log(idOfProduct + colorOfProduct);
-  fetch('http://localhost:3000/api/teddies/' + idOfProduct ) 
-  .then(response => response.json())
-  .then(
-    product => {
-      //données recup en json passer en HTML
-      let myProduct = document.querySelector("#listPanier");
-      myProduct.innerHTML += `<!--Section: Block Content-->
+      //console.log (produits)
+      let idOfProduct = produits.produit;
+      let colorOfProduct = produits.couleur;
+      //console.log(idOfProduct + colorOfProduct);
+      fetch('http://localhost:3000/api/teddies/' + idOfProduct)
+        .then(response => response.json())
+        .then(
+          product => {
+            //données recup en json passer en HTML
+            let myProduct = document.querySelector("#listPanier");
+            myProduct.innerHTML += `<!--Section: Block Content-->
                               <section>
                               
                                 <!--Grid row-->
@@ -75,68 +76,77 @@ for ( let produits of JSON.parse(tabPanier)){
                               
                               </section>
                               <!--Section: Block Content-->`;
-    totalProduits +=  product.price ;
-    //console.log(totalProduits);
-    let mySum = document.querySelector("#prixTotal");
-    mySum.innerHTML = `<strong>${totalProduits}$</strong>`;
-    }
-    
-  );
-  products.push(idOfProduct);
-} ;
-console.log (products);
-const boutonValidation = document.querySelector('#boutonCommande'); 
-// creer fonction puis lappeler pr le button commande,   
-boutonValidation.addEventListener('click', function () { 
-  let firstName = document.querySelector ('#firstname');
-  let lastName = document.querySelector ('#lastname');
-  let address = document.querySelector ('#address');
-  let city = document.querySelector ('#city');
-  let email = document.querySelector ('#email');
+            totalProduits += product.price;
+            //console.log(totalProduits);
+            let mySum = document.querySelector("#prixTotal");
+            mySum.innerHTML = `<strong>${totalProduits}$</strong>`;
+          }
 
-  if((firstName.value.trim() != "") || (lastName.value.trim() !="")  || (address.value.trim() !="") || (city.value.trim() !="") || (email.value.trim() !="") ) {
-    contact = {
-      firstName: firstName.value,
-      lastName: lastName.value,
-      address: address.value,
-      city: city.value,
-      email: email.value
+        );
+      products.push(idOfProduct);
     };
-    console.log(JSON.stringify ({contact , products }))
-
   }
-  else {
-    alert("Veuillez remplir tous les champs");
+  console.log(products);
+  const boutonValidation = document.querySelector('#boutonCommande');
+  // creer fonction puis lappeler pr le button commande,   
+  boutonValidation.addEventListener('click', function () {
+    let firstName = document.querySelector('#firstname');
+    let lastName = document.querySelector('#lastname');
+    let address = document.querySelector('#address');
+    let city = document.querySelector('#city');
+    let email = document.querySelector('#email');
 
-    //console.log(contact)
-    //console.log(products)
-  };
+    if ((firstName.value.trim() != "") ||
+      (lastName.value.trim() != "") || (address.value.trim() != "") || (city.value.trim() != "") || (email.value.trim() != "")) {
+      contact = {
+        firstName: firstName.value,
+        lastName: lastName.value,
+        address: address.value,
+        city: city.value,
+        email: email.value
+      };
+      console.log(JSON.stringify({
+        contact: contact,
+        products: products
+      }))
 
-fetch('http://localhost:3000/api/teddies/order', {
-  method: "POST", 
-  body : JSON.stringify ({contact , products})
-} )
-  .then(response => response.json())
-  .then(console.log, console.error)
-  ;
+    } else {
+      alert("Veuillez remplir tous les champs");
 
-});
-;
+      //console.log(contact)
+      //console.log(products)
+    };
+
+    fetch('http://localhost:3000/api/teddies/order', {
+        method: "POST",
+        headers : {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          contact: contact,
+          products: products
+        })
+      })
+      .then(response => response.json())
+      .then(console.log, console.error);
+
+  });;
 
 
-/* *
- *
- * Expects request to contain:
- * contact: {
- *   firstName: string,
- *   lastName: string,
- *   address: string,
- *   city: string,
- *   email: string
- * }
- * products: [string] <-- array of product _id
- *
- *  puis preparer le fetche et methode post 
- * et voir les données retournées contenant info voir surtout orderid
- */
-
+  /* *
+   *
+   * Expects request to contain:
+   * contact: {
+   *   firstName: string,
+   *   lastName: string,
+   *   address: string,
+   *   city: string,
+   *   email: string
+   * }
+   * products: [string] <-- array of product _id
+   *
+   *  puis preparer le fetche et methode post 
+   * et voir les données retournées contenant info voir surtout orderid
+   */ 
+  // regex pr vlidation chmps mail required ne pas oublier reset localstorage qd recup oreder id
