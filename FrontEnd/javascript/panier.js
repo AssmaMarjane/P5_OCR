@@ -86,7 +86,7 @@ if (tabPanier !=null){
       products.push(idOfProduct);
     };
   }
-  console.log(products);
+  //console.log(products);
   const boutonValidation = document.querySelector('#boutonCommande');
   // creer fonction puis lappeler pr le button commande,   
   boutonValidation.addEventListener('click', function () {
@@ -105,10 +105,10 @@ if (tabPanier !=null){
         city: city.value,
         email: email.value
       };
-      console.log(JSON.stringify({
+      /*console.log(JSON.stringify({
         contact: contact,
         products: products
-      }))
+      }))*/
 
     } else {
       alert("Veuillez remplir tous les champs");
@@ -129,24 +129,16 @@ if (tabPanier !=null){
         })
       })
       .then(response => response.json())
-      .then(console.log, console.error);
+      .then(
+        order => {
+          console.log(order);
+          //console.log(order.orderId)
+          let orderId = order.orderId;
+          console.log(orderId)
+      
+        }
+      );
 
   });;
 
-
-  /* *
-   *
-   * Expects request to contain:
-   * contact: {
-   *   firstName: string,
-   *   lastName: string,
-   *   address: string,
-   *   city: string,
-   *   email: string
-   * }
-   * products: [string] <-- array of product _id
-   *
-   *  puis preparer le fetche et methode post 
-   * et voir les données retournées contenant info voir surtout orderid
-   */ 
   // regex pr vlidation chmps mail required ne pas oublier reset localstorage qd recup oreder id
