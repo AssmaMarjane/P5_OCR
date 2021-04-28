@@ -134,9 +134,12 @@ if (tabPanier !=null){
           console.log(order);
           //console.log(order.orderId)
           let orderId = order.orderId;
-          console.log(orderId)
-      
+          //console.log(orderId)
+          localStorage.setItem('myOrder', JSON.stringify(orderId));
+          console.log(localStorage)
+    
         }
+        
       );
 
   });;

@@ -1,25 +1,12 @@
-//recupérer l'id du produit via parametre Url 
-const urlOrder = window.location.search;
-const urlParams = new URLSearchParams(urlOrder);
-const orderId = urlParams.get('orderId');
-console.log(orderId);
+//recupérer l'order_id stocker dans localStorage
+let order = localStorage.getItem('myOrder');
+console.log(order);
+let orderId = JSON.parse(order);
+console.log(orderId)
 //recupérer info produit pr page via API fetch voir fetch
+let numOrder = document.querySelector("#messageOder");
+numOrder.innerHTML += `<p> Merci pour votre achat dans notre boutique.
+                          Votre numèro de commande est le ${orderId}.</p>`
 
-fetch('http://localhost:3000/api/teddies/' + orderId)
-  .then(response => response.json())
-  .then(
-    order => {
-      console.log(order);
-      console.log(order.orderId)
-      /*let myOrder = document.querySelector("#messageOder");
-      myOrder.innerHTML += `*/
-
-  
-    }
-  );
-
-
-
-      //données recup en json passer en HTML
       
 
