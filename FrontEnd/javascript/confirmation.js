@@ -7,6 +7,16 @@ console.log(orderId)
 let numOrder = document.querySelector("#messageOder");
 numOrder.innerHTML += `<p> Merci pour votre achat dans notre boutique.
                           Votre numèro de commande est le ${orderId}.</p>`
+localStorage.getItem('monTableau');
+console.log(localStorage);
+/*if(orderId != "null"){
+    localStorage.removeItem('monTableau');
+    console.log(localStorage);
+  
+}*/
+//localStorage.removeItem('monTableau');
+//console.log(localStorage);
+
 
       
 

@@ -96,8 +96,27 @@ if (tabPanier !=null){
     let city = document.querySelector('#city');
     let email = document.querySelector('#email');
 
+    function validateEmail(email)
+    {
+      var mailformat = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      if(email.value.match(mailformat))
+      {
+        return true;
+      }
+      else
+      {
+        alert("This is not a valid email address");
+        return false;
+        }
+    }
+
     if ((firstName.value.trim() != "") ||
-      (lastName.value.trim() != "") || (address.value.trim() != "") || (city.value.trim() != "") || (email.value.trim() != "")) {
+      (lastName.value.trim() != "") || 
+      (address.value.trim() != "") || 
+      (city.value.trim() != "") || 
+      (validateEmail = true)
+      )
+      {
       contact = {
         firstName: firstName.value,
         lastName: lastName.value,
@@ -105,10 +124,12 @@ if (tabPanier !=null){
         city: city.value,
         email: email.value
       };
-      /*console.log(JSON.stringify({
+      /*
+      console.log(JSON.stringify({
         contact: contact,
         products: products
-      }))*/
+      }))
+      */
 
     } else {
       alert("Veuillez remplir tous les champs");
@@ -145,3 +166,19 @@ if (tabPanier !=null){
   });;
 
   // regex pr vlidation chmps mail required ne pas oublier reset localstorage qd recup oreder id
+  /*
+      function validateEmail(email) {
+      const regx =;
+      //return regx.test(email);
+      console.log(regx.test(email))
+
+    };
+        const validateEmail = (email)  => {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email.toLowerCase());
+  };
+
+      const mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;    
+
+
+    */
