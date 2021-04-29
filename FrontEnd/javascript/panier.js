@@ -4,20 +4,20 @@ let tabPanier = localStorage.getItem('monTableau');
 let totalProduits = 0;
 let products = [];
 let contact = {};
-if (tabPanier !=null){ 
-    for (let produits of JSON.parse(tabPanier)) {
+if (tabPanier != null) {
+  for (let produits of JSON.parse(tabPanier)) {
 
-      //console.log (produits)
-      let idOfProduct = produits.produit;
-      let colorOfProduct = produits.couleur;
-      //console.log(idOfProduct + colorOfProduct);
-      fetch('http://localhost:3000/api/teddies/' + idOfProduct)
-        .then(response => response.json())
-        .then(
-          product => {
-            //données recup en json passer en HTML
-            let myProduct = document.querySelector("#listPanier");
-            myProduct.innerHTML += `<!--Section: Block Content-->
+    //console.log (produits)
+    let idOfProduct = produits.produit;
+    let colorOfProduct = produits.couleur;
+    //console.log(idOfProduct + colorOfProduct);
+    fetch('http://localhost:3000/api/teddies/' + idOfProduct)
+      .then(response => response.json())
+      .then(
+        product => {
+          //données recup en json passer en HTML
+          let myProduct = document.querySelector("#listPanier");
+          myProduct.innerHTML += `<!--Section: Block Content-->
                               <section>
                               
                                 <!--Grid row-->
@@ -76,71 +76,44 @@ if (tabPanier !=null){
                               
                               </section>
                               <!--Section: Block Content-->`;
-            totalProduits += product.price;
-            //console.log(totalProduits);
-            let mySum = document.querySelector("#prixTotal");
-            mySum.innerHTML = `<strong>${totalProduits}$</strong>`;
-          }
-
-        );
-      products.push(idOfProduct);
-    };
-  }
-  //console.log(products);
-  const boutonValidation = document.querySelector('#boutonCommande');
-  // creer fonction puis lappeler pr le button commande,   
-  boutonValidation.addEventListener('click', function () {
-    let firstName = document.querySelector('#firstname');
-    let lastName = document.querySelector('#lastname');
-    let address = document.querySelector('#address');
-    let city = document.querySelector('#city');
-    let email = document.querySelector('#email');
-
-    function validateEmail(email)
-    {
-      var mailformat = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-      if(email.value.match(mailformat))
-      {
-        return true;
-      }
-      else
-      {
-        alert("This is not a valid email address");
-        return false;
+          totalProduits += product.price;
+          //console.log(totalProduits);
+          let mySum = document.querySelector("#prixTotal");
+          mySum.innerHTML = `<strong>${totalProduits}$</strong>`;
         }
-    }
 
-    if ((firstName.value.trim() != "") ||
-      (lastName.value.trim() != "") || 
-      (address.value.trim() != "") || 
-      (city.value.trim() != "") || 
-      (validateEmail = true)
-      )
-      {
-      contact = {
-        firstName: firstName.value,
-        lastName: lastName.value,
-        address: address.value,
-        city: city.value,
-        email: email.value
-      };
-      /*
-      console.log(JSON.stringify({
-        contact: contact,
-        products: products
-      }))
-      */
+      );
+    products.push(idOfProduct);
+  };
+}
+//console.log(products);
+const boutonValidation = document.querySelector('#boutonCommande');
 
-    } else {
-      alert("Veuillez remplir tous les champs");
+// creer fonction puis lappeler pr le button commande,   
+boutonValidation.addEventListener('click', function () {
+  let firstName = document.querySelector('#firstname');
+  let lastName = document.querySelector('#lastname');
+  let address = document.querySelector('#address');
+  let city = document.querySelector('#city');
+  let email = document.querySelector('#email');
 
-      //console.log(contact)
-      //console.log(products)
+
+  if ((firstName.value.trim() != "") &&
+    (lastName.value.trim() != "") &&
+    (address.value.trim() != "") &&
+    (city.value.trim() != "") &&
+    (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value) == true)
+  ) {
+    contact = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      address: address.value,
+      city: city.value,
+      email: email.value
     };
-
     fetch('http://localhost:3000/api/teddies/order', {
         method: "POST",
-        headers : {
+        headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
@@ -158,27 +131,60 @@ if (tabPanier !=null){
           //console.log(orderId)
           localStorage.setItem('myOrder', JSON.stringify(orderId));
           console.log(localStorage)
-    
+
         }
-        
+
       );
 
-  });;
+    console.log(JSON.stringify({
+      contact: contact,
+      products: products
+    }))
 
-  // regex pr vlidation chmps mail required ne pas oublier reset localstorage qd recup oreder id
-  /*
-      function validateEmail(email) {
-      const regx =;
-      //return regx.test(email);
-      console.log(regx.test(email))
 
-    };
-        const validateEmail = (email)  => {
-      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(email.toLowerCase());
+  } else {
+    alert("Veuillez remplir tous les champs");
+
+    //console.log(contact)
+    //console.log(products)
   };
 
-      const mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;    
 
 
-    */
+
+});;
+
+
+// regex pr vlidation chmps mail required ne pas oublier reset localstorage qd recup oreder id
+/*
+    function validateEmail(email) {
+    const regx =;
+    //return regx.test(email);
+    console.log(regx.test(email))
+
+  };
+      const validateEmail = (email)  => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email.toLowerCase());
+};
+
+    const mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;    
+
+      function validateEmail(paramMail)
+{
+  let mailformat = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  if(paramMail.match(mailformat))
+  {
+    console.log("test fonction")
+    return true;
+
+  }
+  else
+  {
+    console.log("This is not a valid email address");
+    return false;
+    }
+}
+
+
+  */
