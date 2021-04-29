@@ -6,7 +6,7 @@ console.log(orderId)
 //recupérer info produit pr page via API fetch voir fetch
 let numOrder = document.querySelector("#messageOder");
 numOrder.innerHTML += `<p> Merci pour votre achat dans notre boutique.
-                          Votre numèro de commande est le ${orderId}.</p>`
+                          Votre commande d'un montant total $ de port le numero suivant ${orderId}.</p>`
 localStorage.getItem('monTableau');
 console.log(localStorage);
 /*if(orderId != "null"){
@@ -16,6 +16,10 @@ console.log(localStorage);
 }*/
 //localStorage.removeItem('monTableau');
 //console.log(localStorage);
+/* une page de confirmation de commande, remerciant l'utilisateur pour sa
+commande, et indiquant le prix total et l'identifiant de commande envoyé
+par le serveur.*/
+
 
 
       
