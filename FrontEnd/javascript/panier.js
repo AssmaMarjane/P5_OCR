@@ -1,21 +1,21 @@
-// recuperer le tableau localStorage
+// récuperer depuis le localStorage le tableau contenant l'id et les couleurs des produits séléctionnés
 let tabPanier = localStorage.getItem('monTableau');
-//boucler les produits puis récupérer les infos pour chaque produits
+// créer totalProduits à zero pour ensuite obtenir le total des produits dynamiquement dans la boucle
 let totalProduits = 0;
+//créer  tableau product pour contenir l'id des produits et object contact pour contenir info form
 let products = [];
 let contact = {};
 if (tabPanier != null) {
+  //boucle pour parcourir tableau tabPanier
   for (let produits of JSON.parse(tabPanier)) {
-
-    //console.log (produits)
     let idOfProduct = produits.produit;
     let colorOfProduct = produits.couleur;
-    //console.log(idOfProduct + colorOfProduct);
+    //récupérer données API et id_product
     fetch('http://localhost:3000/api/teddies/' + idOfProduct)
       .then(response => response.json())
       .then(
         product => {
-          //données recup en json passer en HTML
+          //données récupérer en json passer en HTML
           let myProduct = document.querySelector("#listPanier");
           myProduct.innerHTML += `<!--Section: Block Content-->
                               <section>
@@ -76,39 +76,36 @@ if (tabPanier != null) {
                               
                               </section>
                               <!--Section: Block Content-->`;
+          //calculer somme prix produits séléctionnés
           totalProduits += product.price;
-         // console.log(totalProduits);
+          //afficher somme en html
           let mySum = document.querySelector("#prixTotal");
           mySum.innerHTML = `<strong>${totalProduits}$</strong>`;
+          //récuperer et stocker montant total dans localStorage
           localStorage.setItem('prixTotal', JSON.stringify(totalProduits));
-          //console.log(localStorage)
-      
         }
-
       );
+    //ajouter id des produits au tableau products
     products.push(idOfProduct);
-
   };
 }
-console.log(totalProduits);
-//console.log(products);
+//cibler bouton validation
 const boutonValidation = document.querySelector('#boutonCommande');
-
-// creer fonction puis lappeler pr le button commande,   
+//créer évenement sur le button commande  
 boutonValidation.addEventListener('click', function () {
   let firstName = document.querySelector('#firstname');
   let lastName = document.querySelector('#lastname');
   let address = document.querySelector('#address');
   let city = document.querySelector('#city');
   let email = document.querySelector('#email');
-
-
+  //créer condition pour vérifier données formulaire valides avant envoi API
   if ((firstName.value.trim() != "") &&
     (lastName.value.trim() != "") &&
     (address.value.trim() != "") &&
     (city.value.trim() != "") &&
     (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value) == true)
   ) {
+    //créer contact et récupérer données formulaires
     contact = {
       firstName: firstName.value,
       lastName: lastName.value,
@@ -116,6 +113,7 @@ boutonValidation.addEventListener('click', function () {
       city: city.value,
       email: email.value
     };
+    //envoyer objet contact et tableau products à API
     fetch('http://localhost:3000/api/teddies/order', {
         method: "POST",
         headers: {
@@ -127,69 +125,18 @@ boutonValidation.addEventListener('click', function () {
           products: products
         })
       })
+      //récupérer réponse API 
       .then(response => response.json())
       .then(
         order => {
-          console.log(order);
-          //console.log(order.orderId)
+          //récupérer numéro de commande = orderId
           let orderId = order.orderId;
-          //console.log(orderId)
+          //stocker le numéro de commande (orderId) dans localStorage
           localStorage.setItem('myOrder', JSON.stringify(orderId));
-          console.log(localStorage)
-
         }
-
       );
-
-    console.log(JSON.stringify({
-      contact: contact,
-      products: products
-    }))
-
-
   } else {
+    //afficher pop up si un des champs du fomulaire n'est pas valide
     alert("Veuillez remplir tous les champs");
-
-    //console.log(contact)
-    //console.log(products)
   };
-
-
-
-
 });;
-
-
-// regex pr vlidation chmps mail required ne pas oublier reset localstorage qd recup oreder id
-/*
-    function validateEmail(email) {
-    const regx =;
-    //return regx.test(email);
-    console.log(regx.test(email))
-
-  };
-      const validateEmail = (email)  => {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email.toLowerCase());
-};
-
-    const mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;    
-
-      function validateEmail(paramMail)
-{
-  let mailformat = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-  if(paramMail.match(mailformat))
-  {
-    console.log("test fonction")
-    return true;
-
-  }
-  else
-  {
-    console.log("This is not a valid email address");
-    return false;
-    }
-}
-
-
-  */
