@@ -77,15 +77,20 @@ if (tabPanier != null) {
                               </section>
                               <!--Section: Block Content-->`;
           totalProduits += product.price;
-          //console.log(totalProduits);
+         // console.log(totalProduits);
           let mySum = document.querySelector("#prixTotal");
           mySum.innerHTML = `<strong>${totalProduits}$</strong>`;
+          localStorage.setItem('prixTotal', JSON.stringify(totalProduits));
+          //console.log(localStorage)
+      
         }
 
       );
     products.push(idOfProduct);
+
   };
 }
+console.log(totalProduits);
 //console.log(products);
 const boutonValidation = document.querySelector('#boutonCommande');
 
