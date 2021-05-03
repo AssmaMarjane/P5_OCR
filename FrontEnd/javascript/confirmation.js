@@ -11,6 +11,7 @@ msgOrder.innerHTML += `<p> Merci pour votre achat dans notre boutique.
 //récupérer depuis le localStorage le tableau des -id et couleurs des produits pour le reset
 localStorage.getItem('monTableau');
 console.log(localStorage);
+/*
 async function resetstorage() {
     localStorage.removeItem('monTableau');
     console.log(localStorage);
@@ -22,6 +23,7 @@ async function resetawait() {
 }
 localStorage.removeItem('monTableau');
 console.log(localStorage);
+*/
 /* une page de confirmation de commande, remerciant l'utilisateur pour sa
 commande, et indiquant le prix total et l'identifiant de commande envoyé
 par le serveur.*/
