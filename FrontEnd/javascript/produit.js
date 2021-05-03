@@ -1,23 +1,20 @@
-//recupérer l'id du produit via parametre Url 
+//récupérer l'id du produit via parametre Url depuis la page d'accueil
 const urlProduct = window.location.search;
 const urlParams = new URLSearchParams(urlProduct);
 const idProduct = urlParams.get('id');
 
-//recupérer info produit pr page via API fetch voir fetch
-
+//récupérer données API et id du/des produit(s) séléctionné(s)
 fetch('http://localhost:3000/api/teddies/' + idProduct)
   .then(response => response.json())
   .then(
     product => {
-      //données recup en json passer en HTML
+      //afficher en HTML objet récupéré en json 
       let myProduct = document.querySelector("#produitSelection");
       myProduct.innerHTML += `<div class="col-lg-12 col-md-6 mb-4">
-
                                <div class="card h-100">
-
                                   <a href="#"><img class="card-img-top" src="${product.imageUrl}" alt=""></a>
                                   <div class="card-body">
-                                    <h4 class="card-title"> ${product.name}</h4>
+                                    <h4 class="card-title">${product.name}</h4>
                                     <p class="card-text">${product.description}</p>
                                     <p class="card-text">${product.price}</p>
                                   </div>
@@ -27,42 +24,39 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
                                     </select>
                                     <button id="boutonPanier" type="button" class="btn btn-primary">Ajouter au panier</button>
                                   </form>
-
                                 </div>
-
                               </div>`;
-      // boucle permettant d'afficher les différentes couleurs dans le tableau product
+      //parcourir l'objet couleur 
       for (let color of product.colors) {
         let colorList = document.querySelector("#inlineFormCustomSelectPref");
+        //afficher couleur séléctionnée
         colorList.innerHTML += ` <option value="${color}">${color}</option>`;
       }
-      //tableau pour localstorage 
+      //créer tableau pour stocker produit(s) et couleur(s) séléctionné(s) dans le localStorage 
       let tabProduct = [];
-      //condition pour charger le tableau vide ou plein 
-      if(localStorage.getItem('monTableau') !== null){tabProduct = JSON.parse(localStorage.getItem('monTableau'));} else {
+      //créer condition pour que si le tableau est plein il se charge dans le localStorage sinon laisser tableau vide
+      if (localStorage.getItem('monTableau') !== null) {
+        tabProduct = JSON.parse(localStorage.getItem('monTableau'));
+      } else {
         tabProduct = [];
       }
+      //créer événement au clique sur le bouton "ajouter au panier"
       const boutonAjout = document.querySelector('#boutonPanier');
-      boutonAjout.addEventListener('click', function () { 
-        //recuperer la valeur de loption au click "ajouter au panier" pour recuperer la couleur selectionnée
+      boutonAjout.addEventListener('click', function () {
+        //récupérer la valeur de loption, au clique "ajouter au panier", pour récuperer la couleur selectionnée
         let optionCouleur = document.getElementById("inlineFormCustomSelectPref");
         let couleurChoisi = optionCouleur.options[optionCouleur.selectedIndex].value;
-        //boite dialogue au click de l'ajout
-        alert ("Produit ajouté au panier!");
-        //stocker tous les produits en localStorage le produit et sa valeur couleur selectionné + ajout panier
-        //creer objet pour stocker les deux valeur dans le tableau en local storage
+        //afficher message de confirmaion d'ajout par boite de dialogue 
+        alert("Produit ajouté au panier!");
+        //stocker dans objet le produit et sa valeur (=couleur selectionnée) 
         let newProduct = {
-          produit :idProduct, 
-          couleur : couleurChoisi
+          produit: idProduct,
+          couleur: couleurChoisi
         }
-        //ensuite ajout si il y a nouveaux produits avec push
+        //si il y a de nouveaux produits ajouter avec push
         tabProduct.push(newProduct);
+        //ajoter mon tableau au localStorage
         localStorage.setItem('monTableau', JSON.stringify(tabProduct));
-        console.log(localStorage);
-        //ajouter plusieurs produits-> ajouter les selections dans tableau (si tab existant à compléter)
       });
-      //return optionCouleur.options[optionCouleur.selectedIndex].value;
     }
   );
-
-//let listProduct = localStorage.get
