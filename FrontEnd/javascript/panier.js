@@ -135,7 +135,6 @@ boutonValidation.addEventListener('click', function () {
           localStorage.setItem('myOrder', JSON.stringify(orderId));
         }
       );
-      localStorage.clear('monTableau');
   } else {
     //afficher pop up si un des champs du fomulaire n'est pas valide
     alert("Veuillez remplir tous les champs");

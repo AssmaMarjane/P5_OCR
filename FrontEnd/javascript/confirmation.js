@@ -8,7 +8,9 @@ let montantTotal = JSON.parse(totalCommande);
 let msgOrder = document.querySelector("#messageOder");
 msgOrder.innerHTML += `<p> Merci pour votre achat dans notre boutique.
                           Votre commande d'un montant total de ${montantTotal}$ est enregistrée sous le numero suivant ${orderId}.Conservez bien ce numèro.abientot dans notre boutique!</p>`
-//récupérer depuis le localStorage le tableau des -id et couleurs des produits pour le reset
+localStorage.clear('monTableau');
+
+                          //récupérer depuis le localStorage le tableau des -id et couleurs des produits pour le reset
 //localStorage.clear();
 //console.log(localStorage);
 /*
