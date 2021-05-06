@@ -5,4 +5,29 @@
  */
 body {
   padding-top: 100px;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+.container {
+  min-height: 100%;
+}
+
+.navbar {
+  background-color: #e7dae6;
+
+}
+.navbar-brand{
+  color: black;
+}
+
+.py-5 {
+  background-color: #e7dae6;
+
+}
+.nav-link {
+  color: black;
 }
