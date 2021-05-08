@@ -16,7 +16,7 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
                                   <div class="card-body">
                                     <h4 class="card-title">${product.name}</h4>
                                     <p class="card-text">${product.description}</p>
-                                    <p class="card-text">${product.price}</p>
+                                    <p class="card-text">${product.price}€</p>
                                   </div>
                                   <form class="form-inline">
                                     <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Couleurs</label>

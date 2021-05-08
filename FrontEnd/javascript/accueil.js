@@ -20,7 +20,7 @@ function displayProducts (products){
                             <h4 class="card-title">
                               <a > ${product.name}</a>
                             </h4>
-                            <p class="card-text">${product.price}&euro</p>
+                            <p class="card-text">${product.price}€</p>
                             <p class="card-text">${product.description}</p>
                           </div>
                         </div>

@@ -42,7 +42,7 @@ if (tabPanier != null) {
                                                 <div>
                                                   <h5>${product.name}</h5>
                                                   <p class="mb-2 text-muted text-uppercase small">Color: ${colorOfProduct} </p>
-                                                  <p class="mb-3 text-muted text-uppercase small">Price: ${product.price}$</p>
+                                                  <p class="mb-3 text-muted text-uppercase small">Price: ${product.price}€</p>
                                                 </div>
                                                 <div>
                                               </div>
@@ -51,7 +51,7 @@ if (tabPanier != null) {
                                                   <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
                                                       class="fas fa-trash-alt mr-1"></i> Remove item </a>
                                                 </div>
-                                                <p class="mb-0"><span><strong id="summary">${product.price}$</strong></span></p class="mb-0">
+                                                <p class="mb-0"><span><strong id="summary">${product.price}€</strong></span></p class="mb-0">
                                               </div>
                                             </div>
                                           </div>
@@ -80,7 +80,7 @@ if (tabPanier != null) {
           totalProduits += product.price;
           //afficher somme en html
           let mySum = document.querySelector("#prixTotal");
-          mySum.innerHTML = `<strong>${totalProduits}$</strong>`;
+          mySum.innerHTML = `<strong>${totalProduits}€</strong>`;
           //récuperer et stocker montant total dans localStorage
           localStorage.setItem('prixTotal', JSON.stringify(totalProduits));
         }
@@ -133,15 +133,18 @@ boutonValidation.addEventListener('click', function () {
           let orderId = order.orderId;
           //stocker le numéro de commande (orderId) dans localStorage
           localStorage.setItem('myOrder', JSON.stringify(orderId));
+          alert("Votre commande a bien été prise en compte.")
+          window.location.href = './confirmation.html';
         }
       );
-      alert("Votre commande a bien été prise en compte.")
-      window.location.href = './confirmation.html';
-    
-  
   } else {
     //afficher pop up si un des champs du fomulaire n'est pas valide
     alert("Veuillez remplir tous les champs");
   };
 
 });;
+
+//voir btn confirm (pr remplacer pop up page produit)
+//diviser le prix par 100 et mettre en euros
+//fonction pr diviser prix creer fichier js pr toutes les autres pages
+//fonction pr decouper coe de façon intelligente

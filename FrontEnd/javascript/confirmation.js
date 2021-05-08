@@ -7,7 +7,7 @@ let montantTotal = JSON.parse(totalCommande);
 //afficher montant total et numéro de commande
 let msgOrder = document.querySelector("#messageOrder");
 msgOrder.innerHTML += `<p> Merci pour votre achat dans notre boutique.</p>
-                       <p>Votre commande d'un montant total de ${montantTotal}&euro est enregistrée sous le numero suivant ${orderId}.</p>
+                       <p>Votre commande d'un montant total de ${montantTotal}€ est enregistrée sous le numero suivant ${orderId}.</p>
                        <p>Conservez bien ce numèro.</p>
                        <p>A bientôt sur notre site!</p>`
 localStorage.clear('monTableau');
