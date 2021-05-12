@@ -1,4 +1,5 @@
-function dividedPrice (priceproduct){
-let price = nemeral (1000);
-let division = price.divide (100);
-};
+
+function dividedPrice (price){
+    let division = price/100;
+    return division ;
+    };
