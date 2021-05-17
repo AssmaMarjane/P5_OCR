@@ -1,3 +1,5 @@
+//import {dividedPrice} from '/utils.js';
+  
 //récupérer données API - catégorie TEDDY
 fetch('http://localhost:3000/api/teddies')
   .then(response => response.json())
@@ -5,7 +7,8 @@ fetch('http://localhost:3000/api/teddies')
     //récupérer objet contenant les produits
     products => {
       //parcourir tous les objets 
-      displayProducts(products)
+      displayProducts(products);
+    
     }
   );
 
@@ -20,16 +23,26 @@ function displayProducts (products){
                             <h4 class="card-title">
                               <a > ${product.name}</a>
                             </h4>
-                            <p class="card-text">${product.price}€</p>
+                            <p class="card-text">${dividedPrice(product.price)}€</p>
                             <p class="card-text">${product.description}</p>
                           </div>
                         </div>
                       </div>`;
+                      //let price = product.price;
+                      //console.log(price /100);
+                      
+                    
   }
 
 
 }
 
+  
+
+//  dividedPrice(product.price);
+//  console.log(product.price)
+
+//<script src="./javascript/utils.js"></script>
 
 /* Données produits Teddy:
     product._id =  id du produit
@@ -39,4 +52,7 @@ function displayProducts (products){
     product.description = la description du produit
 
 */
+/*let dividprice = product.price;
+function dividedPrice (dividprice);
+console.log(dividprice);*/
 
