@@ -32,9 +32,6 @@ function displayProducts(product) {
                                 </form>
                               </div>
                             </div>`;
-  /*let price = product.price;
-  price.divided(100);
-  console.log(product.price);*/
 
   //parcourir l'objet couleur 
   for (let color of product.colors) {
@@ -59,7 +56,7 @@ function displayProducts(product) {
 
 }
 
-//function buttonConfirm (buttonAdd){}
+//fonction évenement sur bouton valider
 function buttonConfirm(tab) {
   //récupérer la valeur de loption, au clique "ajouter au panier", pour récuperer la couleur selectionnée
   let optionCouleur = document.getElementById("inlineFormCustomSelectPref");
@@ -78,4 +75,3 @@ function buttonConfirm(tab) {
 }
 
 
-//  <script src=".\utils.js"></script>

@@ -12,22 +12,3 @@ msgOrder.innerHTML += `<p> Merci pour votre achat dans notre boutique.</p>
                        <p>A bientôt sur notre site!</p>`
 localStorage.clear('monTableau');
 
-//<script src="./javascript/utils.js"></script>
-
-
-//localStorage.clear();
-//console.log(localStorage);
-/*
-async function resetstorage() {
-    localStorage.removeItem('monTableau');
-    console.log(localStorage);
-}
-
-async function resetawait() {
-    const resetStorage = await resetstorage();
-    return resetStorage;
-}
-localStorage.removeItem('monTableau');
-console.log(localStorage);
-*/
-//
