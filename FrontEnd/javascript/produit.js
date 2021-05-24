@@ -28,7 +28,7 @@ function displayProducts(product) {
                                   <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Couleurs</label>
                                   <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                                   </select>
-                                  <button id="boutonPanier" type="button" class="btn btn-primary">Ajouter au panier</button>
+                                  <button id="boutonPanier" type="button" class="btn btn-secondary btn-lg">Ajouter au panier</button>
                                 </form>
                               </div>
                             </div>`;

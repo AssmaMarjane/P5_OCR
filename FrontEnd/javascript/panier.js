@@ -44,10 +44,6 @@ if (tabPanier != null) {
                                                 <div>
                                               </div>
                                               <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                  <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
-                                                      class="fas fa-trash-alt mr-1"></i> Remove item </a>
-                                                </div>
                                                 <p class="mb-0"><span><strong id="summary">${dividedPrice(product.price)}€</strong></span></p class="mb-0">
                                               </div>
                                             </div>
