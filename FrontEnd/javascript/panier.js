@@ -150,4 +150,3 @@ function buttonValidate() {
 
 };;
 
-//fonction pr decouper code de façon intelligente
