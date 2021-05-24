@@ -78,11 +78,31 @@ if (tabPanier != null) {
     //ajouter id des produits au tableau products
     products.push(idOfProduct);
   };
+} else {
+  let myProduct = document.querySelector("#listPanier");
+  myProduct.innerHTML += `
+    <div class="col-lg-12">
+      <div  class="jumbotron text-center" class="col-lg-12 ">
+        <div class="col-lg-12">
+          <p > Le panier est vide </p>
+          <a  href="../index.html">Retour à la page d'Accueil</a>
+        </div>
+      </div>
+    </div>
+    `
+
 }
-//cibler bouton validation
+//cibler bouton validation 
 const boutonValidation = document.querySelector('#boutonCommande');
 //créer évenement sur le button commande  
-boutonValidation.addEventListener('click', function () {
+boutonValidation.addEventListener('click', e => {
+  buttonValidate()
+});
+
+
+
+
+function buttonValidate() {
   let firstName = document.querySelector('#firstname');
   let lastName = document.querySelector('#lastname');
   let address = document.querySelector('#address');
@@ -132,11 +152,6 @@ boutonValidation.addEventListener('click', function () {
     alert("Veuillez remplir tous les champs");
   };
 
-});;
+};;
 
-//<script src="./javascript/utils.js"></script>
-
-//voir btn confirm (pr remplacer pop up page produit)
-//diviser le prix par 100 et mettre en euros
-//fonction pr diviser prix creer fichier js pr toutes les autres pages
-//fonction pr decouper coe de façon intelligente
+//fonction pr decouper code de façon intelligente
