@@ -17,7 +17,7 @@ html {
 }
 
 .navbar {
-  background-color: #e7dae6;
+  background-color: #f5e7f4;
 
 }
 .navbar-brand{
@@ -25,9 +25,13 @@ html {
 }
 
 .py-5 {
-  background-color: #e7dae6;
+  background-color: #f5e7f4;
 
 }
 .nav-link {
   color: black;
+}
+
+.logoOrinoco {
+  width: 17%;
 }
