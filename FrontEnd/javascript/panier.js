@@ -96,8 +96,6 @@ boutonValidation.addEventListener('click', e => {
 });
 
 
-
-
 function buttonValidate() {
   let firstName = document.querySelector('#firstname');
   let lastName = document.querySelector('#lastname');
