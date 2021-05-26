@@ -10,8 +10,6 @@ fetch('http://localhost:3000/api/teddies')
     }
   );
 
-
-
 function displayProducts(products) {
   for (let product of products) {
     //afficher tous les produits récupérés dans objet et leurs données
@@ -23,7 +21,7 @@ function displayProducts(products) {
                             <h4 class="card-title">
                               <a > ${product.name}</a>
                             </h4>
-                            <p class="card-text">${dividedPrice(product.price)}€</p>
+                            <p class="card-text">${dividedPrice(product.price)}</p>
                             <p class="card-text">${product.description}</p>
                           </div>
                         </div>
@@ -33,11 +31,3 @@ function displayProducts(products) {
 }
 
 
-/* Données produits Teddy:
-    product._id =  id du produit
-    product.imageUrl = la photo du produit 
-    product.name =  nom du produit 
-    product.price = le prix du produit
-    product.description = la description du produit
-
-*/
