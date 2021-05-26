@@ -11,10 +11,11 @@ fetch('http://localhost:3000/api/teddies/' + idProduct)
       displayProducts(product);
     }
   );
-
-
+/**
+ * Cette fonction permet d'afficher le produit sélectionné.
+ * @param {object} product - Objet contenant les produits,récupéré depuis API.
+ */
 function displayProducts(product) {
-  //afficher en HTML objet récupéré en json 
   let myProduct = document.querySelector("#produitSelection");
   myProduct.innerHTML += `<div class="col-lg-12 col-md-6 mb-4">
                              <div class="card h-100">
@@ -36,7 +37,6 @@ function displayProducts(product) {
   //parcourir l'objet couleur 
   for (let color of product.colors) {
     let colorList = document.querySelector("#inlineFormCustomSelectPref");
-    //afficher couleur séléctionnée
     colorList.innerHTML += ` <option value="${color}">${color}</option>`;
   }
   //créer tableau pour stocker produit(s) et couleur(s) séléctionné(s) dans le localStorage 
@@ -52,7 +52,6 @@ function displayProducts(product) {
     buttonConfirm(tabProduct)
   }
   );
-
 
 }
 
