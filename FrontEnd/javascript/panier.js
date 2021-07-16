@@ -44,7 +44,7 @@ if (tabPanier != null) {
                                                 <div>
                                               </div>
                                               <div class="d-flex justify-content-between align-items-center">
-                                                <p class="mb-0"><span><strong id="summary">${dividedPrice(product.price)}€</strong></span></p class="mb-0">
+                                                <p class="mb-0"><span><strong id="summary">${dividedPrice(product.price)}</strong></span></p class="mb-0">
                                               </div>
                                             </div>
                                           </div>
@@ -66,7 +66,7 @@ if (tabPanier != null) {
           totalProduits += product.price;
           //afficher somme en html
           let mySum = document.querySelector("#prixTotal");
-          mySum.innerHTML = `<strong>${dividedPrice(totalProduits)}€</strong>`;
+          mySum.innerHTML = `<strong>${dividedPrice(totalProduits)}</strong>`;
           //récuperer et stocker montant total dans localStorage
           localStorage.setItem('prixTotal', JSON.stringify(totalProduits));
         }
